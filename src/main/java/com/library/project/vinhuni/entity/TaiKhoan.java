@@ -61,4 +61,20 @@ public class TaiKhoan {
 		return matKhau;
 	}
 
+	public void setDocGia(DocGia docGia) {
+
+		this.docGia = docGia;
+	}
+
+	public DocGia getDocGia() {
+		return docGia;
+	}
+
+	public void setNhanVien(NhanVien nhanVien) {
+		this.nhanVien = nhanVien;
+	}
+
+	public NhanVien getNhanVien() {
+		return nhanVien;
+	}
 }

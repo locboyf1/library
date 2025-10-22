@@ -24,7 +24,7 @@ public class TaiKhoanService implements UserDetailsService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	public List<TaiKhoan> getAll() {
+	public List<TaiKhoan> findAll() {
 		return taiKhoanRepository.findAll();
 	}
 

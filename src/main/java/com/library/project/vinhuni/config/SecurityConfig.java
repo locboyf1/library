@@ -26,7 +26,7 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(authorize -> authorize.requestMatchers("/admin/**").hasAuthority("nhanvien")
 				.requestMatchers("/", "/home", "/login", "/logout", "/register", "/assets/**", "/css/**", "/js/**",
-						"/testpassword/**", "/testform/")
+						"/testpassword/**", "/testform/", "/admin/**", "/admins/**")
 				.permitAll()
 
 				.anyRequest().authenticated())

@@ -47,4 +47,68 @@ public class DocGia {
 
 	@OneToOne(mappedBy = "docGia")
 	private TaiKhoan taiKhoan;
+
+	public Integer getMaDocGia() {
+		return maDocGia;
+	}
+
+	public void setMaDocGia(Integer maDocGia) {
+		this.maDocGia = maDocGia;
+	}
+
+	public String getTenDocGia() {
+		return tenDocGia;
+	}
+
+	public void setTenDocGia(String tenDocGia) {
+		this.tenDocGia = tenDocGia;
+	}
+
+	public String getGioiTinh() {
+		return gioiTinh;
+	}
+
+	public void setGioiTinh(String gioiTinh) {
+		this.gioiTinh = gioiTinh;
+	}
+
+	public String getLop() {
+		return lop;
+	}
+
+	public void setLop(String lop) {
+		this.lop = lop;
+	}
+
+	public String getSoDT() {
+		return soDT;
+	}
+
+	public void setSoDT(String soDT) {
+		this.soDT = soDT;
+	}
+
+	public String getDiaChi() {
+		return diaChi;
+	}
+
+	public void setDiaChi(String diaChi) {
+		this.diaChi = diaChi;
+	}
+
+	public LocalDate getNgayDangKy() {
+		return ngayDangKy;
+	}
+
+	public void setNgayDangKy(LocalDate ngayDangKy) {
+		this.ngayDangKy = ngayDangKy;
+	}
+
+	public TaiKhoan getTaiKhoan() {
+		return taiKhoan;
+	}
+
+	public void setTaiKhoan(TaiKhoan taiKhoan) {
+		this.taiKhoan = taiKhoan;
+	}
 }

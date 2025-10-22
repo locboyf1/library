@@ -47,4 +47,68 @@ public class NhanVien {
 
 	@OneToOne(mappedBy = "nhanVien")
 	private TaiKhoan taiKhoan;
+
+	public Integer getMaNhanVien() {
+		return maNhanVien;
+	}
+
+	public void setMaNhanVien(Integer maNhanVien) {
+		this.maNhanVien = maNhanVien;
+	}
+
+	public String getTenNhanVien() {
+		return tenNhanVien;
+	}
+
+	public void setTenNhanVien(String tenNhanVien) {
+		this.tenNhanVien = tenNhanVien;
+	}
+
+	public String getGioiTinh() {
+		return gioiTinh;
+	}
+
+	public void setGioiTinh(String gioiTinh) {
+		this.gioiTinh = gioiTinh;
+	}
+
+	public LocalDate getNgaySinh() {
+		return ngaySinh;
+	}
+
+	public void setNgaySinh(LocalDate ngaySinh) {
+		this.ngaySinh = ngaySinh;
+	}
+
+	public String getSoDT() {
+		return soDT;
+	}
+
+	public void setSoDT(String soDT) {
+		this.soDT = soDT;
+	}
+
+	public String getDiaChi() {
+		return diaChi;
+	}
+
+	public void setDiaChi(String diaChi) {
+		this.diaChi = diaChi;
+	}
+
+	public String getChucVu() {
+		return chucVu;
+	}
+
+	public void setChucVu(String chucVu) {
+		this.chucVu = chucVu;
+	}
+
+	public TaiKhoan getTaiKhoan() {
+		return taiKhoan;
+	}
+
+	public void setTaiKhoan(TaiKhoan taiKhoan) {
+		this.taiKhoan = taiKhoan;
+	}
 }
