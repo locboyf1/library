@@ -2,6 +2,9 @@ package com.library.project.vinhuni.dto;
 
 import java.time.LocalDate;
 
+import com.library.project.vinhuni.entity.NhanVien;
+import com.library.project.vinhuni.entity.TaiKhoan;
+
 public class NhanVienDto {
 
 	private String tenNhanVien;
@@ -76,5 +79,18 @@ public class NhanVienDto {
 
 	public void setMatKhau(String matKhau) {
 		this.matKhau = matKhau;
+	}
+
+	public void setNhanVien(NhanVien nhanVien, TaiKhoan taiKhoan) {
+
+		this.tenNhanVien = nhanVien.getTenNhanVien();
+		this.diaChi = nhanVien.getDiaChi();
+		this.soDt = nhanVien.getSoDT();
+		this.gioiTinh = nhanVien.getGioiTinh();
+		this.ngaySinh = nhanVien.getNgaySinh();
+		this.chucVu = nhanVien.getChucVu();
+
+		this.tenDangNhap = taiKhoan.getTenDangNhap();
+		this.matKhau = null;
 	}
 }

@@ -2,6 +2,8 @@ package com.library.project.vinhuni.entity;
 
 import java.time.LocalDate;
 
+import com.library.project.vinhuni.dto.DocGiaDto;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -110,5 +112,13 @@ public class DocGia {
 
 	public void setTaiKhoan(TaiKhoan taiKhoan) {
 		this.taiKhoan = taiKhoan;
+	}
+
+	public void setDocGia(DocGiaDto docGiaDto) {
+		this.diaChi = docGiaDto.getDiaChi();
+		this.gioiTinh = docGiaDto.getGioiTinh();
+		this.lop = docGiaDto.getLop();
+		this.soDT = docGiaDto.getSoDt();
+		this.tenDocGia = docGiaDto.getTenDocGia();
 	}
 }

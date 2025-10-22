@@ -28,6 +28,10 @@ public class TaiKhoanService implements UserDetailsService {
 		return taiKhoanRepository.findAll();
 	}
 
+	public TaiKhoan findByTenDangNhap(String tenDangNhap) {
+		return taiKhoanRepository.findByTenDangNhap(tenDangNhap).orElse(null);
+	}
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		TaiKhoan nguoiDung = taiKhoanRepository.findByTenDangNhap(username).orElseThrow(

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.library.project.vinhuni.dto.DocGiaDto;
 import com.library.project.vinhuni.dto.NhanVienDto;
@@ -58,11 +59,7 @@ public class UsersController {
 	@PostMapping("/create/nhanvien")
 	public String createNhanVien(@ModelAttribute NhanVienDto userNhanVien) {
 		NhanVien nhanVien = new NhanVien();
-		nhanVien.setSoDT(userNhanVien.getSoDt());
-		nhanVien.setChucVu(userNhanVien.getChucVu());
-		nhanVien.setDiaChi(userNhanVien.getDiaChi());
-		nhanVien.setGioiTinh(userNhanVien.getGioiTinh());
-		nhanVien.setTenNhanVien(userNhanVien.getTenNhanVien());
+		nhanVien.setNhanVien(userNhanVien);
 
 		NhanVien nhanVienUpdated = nhanVienRepository.save(nhanVien);
 
@@ -80,12 +77,8 @@ public class UsersController {
 	@PostMapping("/create/docgia")
 	public String createDocGia(@ModelAttribute DocGiaDto userDocGia) {
 		DocGia docGia = new DocGia();
-		docGia.setDiaChi(userDocGia.getDiaChi());
-		docGia.setGioiTinh(userDocGia.getGioiTinh());
-		docGia.setLop(userDocGia.getLop());
-		docGia.setSoDT(userDocGia.getSoDt());
+		docGia.setDocGia(userDocGia);
 		docGia.setNgayDangKy(LocalDate.now());
-		docGia.setTenDocGia(userDocGia.getTenDocGia());
 
 		DocGia docGiaUpdated = docGiaRepository.save(docGia);
 
@@ -95,6 +88,57 @@ public class UsersController {
 		String matKhauMaHoa = passwordEncoder.encode(userDocGia.getMatKhau());
 		taiKhoan.setMatKhau(matKhauMaHoa);
 		taiKhoan.setTenDangNhap(userDocGia.getTenDangNhap());
+
+		taiKhoanRepository.save(taiKhoan);
+		return "redirect:/admin/users";
+	}
+
+	@PostMapping("/update")
+	public String update(Model model, @RequestParam("tenDangNhap") String tenDangNhap) {
+		TaiKhoan taiKhoan = taiKhoanService.findByTenDangNhap(tenDangNhap);
+
+		if (taiKhoan.getLoaiTaiKhoan().equals("nhanvien")) {
+			NhanVienDto nhanVienDto = new NhanVienDto();
+			nhanVienDto.setNhanVien(taiKhoan.getNhanVien(), taiKhoan);
+			model.addAttribute("user", nhanVienDto);
+			model.addAttribute("maNhanVien", taiKhoan.getNhanVien().getMaNhanVien());
+			return "/admin/users/updateNhanVien";
+		} else {
+			DocGiaDto docGiaDto = new DocGiaDto();
+			docGiaDto.setDocGia(taiKhoan.getDocGia(), taiKhoan);
+			model.addAttribute("user", docGiaDto);
+			model.addAttribute("maDocGia", taiKhoan.getDocGia().getMaDocGia());
+			return "/admin/users/updateDocGia";
+		}
+	}
+
+	@PostMapping("/update/nhanvien")
+	public String updateNhanVien(@ModelAttribute("user") NhanVienDto user,
+			@RequestParam("maNhanVien") String maNhanVien) {
+		NhanVien nhanVien = nhanVienRepository.findByMaNhanVien(maNhanVien).orElse(null);
+		nhanVien.setNhanVien(user);
+
+		NhanVien nhanVienUpdated = nhanVienRepository.save(nhanVien);
+
+		TaiKhoan taiKhoan = taiKhoanService.findByTenDangNhap(user.getTenDangNhap());
+		taiKhoan.setNhanVien(nhanVienUpdated);
+		taiKhoan.setLoaiTaiKhoan("nhanvien");
+
+		taiKhoanRepository.save(taiKhoan);
+
+		return "redirect:/admin/users";
+	}
+
+	@PostMapping("/update/docgia")
+	public String updateNhanVien(@ModelAttribute("user") DocGiaDto user, @RequestParam("maDocGia") String maDocGia) {
+		DocGia docGia = docGiaRepository.findByMaDocGia(maDocGia).orElse(null);
+		docGia.setDocGia(user);
+
+		DocGia docGiaUpdated = docGiaRepository.save(docGia);
+
+		TaiKhoan taiKhoan = taiKhoanService.findByTenDangNhap(user.getTenDangNhap());
+		taiKhoan.setDocGia(docGiaUpdated);
+		taiKhoan.setLoaiTaiKhoan("docgia");
 
 		taiKhoanRepository.save(taiKhoan);
 		return "redirect:/admin/users";

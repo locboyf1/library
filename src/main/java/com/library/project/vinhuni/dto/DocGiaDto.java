@@ -1,5 +1,8 @@
 package com.library.project.vinhuni.dto;
 
+import com.library.project.vinhuni.entity.DocGia;
+import com.library.project.vinhuni.entity.TaiKhoan;
+
 public class DocGiaDto {
 
 	private String tenDocGia;
@@ -65,6 +68,17 @@ public class DocGiaDto {
 
 	public void setMatKhau(String matKhau) {
 		this.matKhau = matKhau;
+	}
+
+	public void setDocGia(DocGia docGia, TaiKhoan taiKhoan) {
+		this.tenDocGia = docGia.getTenDocGia();
+		this.diaChi = docGia.getDiaChi();
+		this.soDt = docGia.getSoDT();
+		this.gioiTinh = docGia.getGioiTinh();
+		this.lop = docGia.getLop();
+
+		this.tenDangNhap = taiKhoan.getTenDangNhap();
+		this.matKhau = null;
 	}
 
 }
