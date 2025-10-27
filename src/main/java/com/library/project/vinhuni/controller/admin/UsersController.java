@@ -24,7 +24,7 @@ import com.library.project.vinhuni.repository.TaiKhoanRepository;
 import com.library.project.vinhuni.service.TaiKhoanService;
 
 @Controller
-@RequestMapping("/admin/users")
+@RequestMapping("/admin/nguoidung")
 public class UsersController {
 
 	@Autowired

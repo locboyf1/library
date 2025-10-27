@@ -19,13 +19,13 @@
 							<h4>Thể Loại</h4>
 						</div>
 						<div class="card-body">
-							<a class="section-title mt-0 btn btn-outline-success">Thêm thể loại</a>
+							<a th:href="@{/admin/theloai/create}" class="section-title mt-0 btn btn-outline-success">Thêm thể loại</a>
 							<table class="table table-hover">
 								<thead>
 									<tr>
 										<th scope="col">STT</th>
 										<th scope="col">Tên Thể Loại</th>
-										<th scope="col">Mô Tả</th>
+										<th class="col-6" scope="col">Mô Tả</th>
 										<th scope="col">Bí Danh</th>
 										<th scope="col">Hành Động</th>
 									</tr>
@@ -37,8 +37,8 @@
 										<td th:text="${theloai.moTa}">Otto</td>
 										<td th:text="${theloai.biDanh}">@mdo</td>
 										<td>
-										<a class="btn btn-outline-info ">Sửa</a>
-										<a class="btn btn-outline-danger ">Xoá</a>
+										<a th:href="@{/admin/theloai/update/{id}(id = ${theloai.maTheLoai})}" class="btn btn-outline-info ">Sửa</a>
+										<a th:href="@{/admin/theloai/show/{id}(id = ${theloai.maTheLoai})}" th:class="${theloai.hien ? 'btn btn-outline-warning' : 'btn btn-outline-danger'}"><i th:class="${theloai.hien ? 'fa fa-eye' : 'fa fa-eye-slash'}" aria-hidden="true"></i><span th:text="${theloai.hien ? 'Đang hiện' : 'Đã ẩn' }">Ẩn</span></a>
 										</td>
 									</tr>
 								</tbody>

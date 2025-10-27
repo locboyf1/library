@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.library.project.vinhuni.entity.TheLoai;
@@ -29,4 +32,35 @@ public class TheLoaiController {
 		return "admin/theloai/index";
 	}
 
+	@GetMapping("/create")
+	public String create(Model model) {
+		TheLoai theLoai = new TheLoai();
+		model.addAttribute("theLoai", theLoai);
+		return "admin/theloai/create";
+	}
+
+	@PostMapping("/create")
+	public String create(@ModelAttribute("theLoai") TheLoai theLoai, Model model) {
+		theLoaiService.create(theLoai);
+		return "redirect:/admin/theloai";
+	}
+
+	@GetMapping("/update/{id}")
+	public String update(@PathVariable("id") Integer maTheLoai, Model model) {
+		TheLoai theLoai = theLoaiService.findByMaTheLoai(maTheLoai);
+		model.addAttribute("theLoai", theLoai);
+		return "admin/theloai/update";
+	}
+
+	@PostMapping("/update")
+	public String update(@ModelAttribute("theLoai") TheLoai theLoai) {
+		theLoaiService.update(theLoai);
+		return "redirect:/admin/theloai";
+	}
+
+	@GetMapping("/show/{id}")
+	public String show(@PathVariable("id") Integer maTheLoai) {
+		theLoaiService.show(maTheLoai);
+		return "redirect:/admin/theloai";
+	}
 }

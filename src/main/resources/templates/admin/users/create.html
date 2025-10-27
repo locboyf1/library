@@ -24,7 +24,7 @@
 									<option value="docgia">Độc giả</option>
 								</select>
 							</div>
-							<form th:action="@{/admin/users/create/nhanvien}" method="post"
+							<form th:action="@{/admin/nguoidung/create/nhanvien}" method="post"
 								id="nhanVienForm" th:object="${userNhanVien}" class="d-none">
 								<div class="form-group">
 									<label>Tên đăng nhập</label> <input type="text"
@@ -68,7 +68,7 @@
 									<button type="reset" class="btn btn-secondary">Xóa</button>
 								</div>
 							</form>
-							<form th:action="@{/admin/users/create/docgia}" method="post"
+							<form th:action="@{/admin/nguoidung/create/docgia}" method="post"
 								id="docGiaForm" th:object="${userDocGia}" class="d-none">
 								<div class="form-group">
 									<label>Tên đăng nhập</label> <input type="text"

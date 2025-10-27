@@ -562,7 +562,9 @@
                                 </li>
                             </ul>
                         </div>
+                        
                         <a sec:authorize="isAnonymous()" class="bj_theme_btn strock_btn hidden-sm hidden-xs" th:href="@{/login}"><i class="fa-regular fa-user"></i>Đăng nhập</a>
+                        <a sec:authorize="isAuthenticated()" class="bj_theme_btn strock_btn hidden-sm hidden-xs" th:href="@{/admin}"><i class="fa-regular fa-user"></i>Trang quản trị</a>
                         <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post"><button type="submit" class="bj_theme_btn strock_btn hidden-sm hidden-xs">Đăng xuất</button></form>
                     </div>
                 </div>

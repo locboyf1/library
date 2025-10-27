@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tbltheloai")
+@Table(name = "tblTheLoai")
 public class TheLoai {
 
 	@Id
@@ -19,11 +19,14 @@ public class TheLoai {
 	@Column(name = "TenTheLoai", length = 100)
 	private String tenTheLoai;
 
-	@Column(name = "MoTa", length = 100)
+	@Column(name = "MoTa", length = 500)
 	private String moTa;
 
 	@Column(name = "BiDanh", length = 100)
 	private String biDanh;
+
+	@Column(name = "Hien")
+	private Boolean hien;
 
 	public Integer getMaTheLoai() {
 		return maTheLoai;
@@ -55,5 +58,13 @@ public class TheLoai {
 
 	public void setBiDanh(String biDanh) {
 		this.biDanh = biDanh;
+	}
+
+	public void setHien(Boolean hien) {
+		this.hien = hien;
+	}
+
+	public Boolean getHien() {
+		return this.hien;
 	}
 }
