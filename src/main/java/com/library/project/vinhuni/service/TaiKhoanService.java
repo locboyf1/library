@@ -43,4 +43,9 @@ public class TaiKhoanService implements UserDetailsService {
 		return new User(nguoiDung.getTenDangNhap(), nguoiDung.getMatKhau(), authorities);
 	}
 
+	public void show(String tenDangNhap) {
+		TaiKhoan taiKhoan = taiKhoanRepository.findByTenDangNhap(tenDangNhap).orElse(null);
+		taiKhoan.setTrangThai(!taiKhoan.getTrangThai());
+		taiKhoanRepository.save(taiKhoan);
+	}
 }

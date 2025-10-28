@@ -29,6 +29,9 @@ public class TaiKhoan {
 	@Column(name = "LoaiTaiKhoan", length = 20)
 	private String loaiTaiKhoan;
 
+	@Column(name = "TrangThai", nullable = false)
+	private Boolean trangThai;
+
 	@OneToOne
 	@JoinColumn(name = "MaNhanVien", referencedColumnName = "MaNhanVien")
 	private NhanVien nhanVien;
@@ -76,5 +79,13 @@ public class TaiKhoan {
 
 	public NhanVien getNhanVien() {
 		return nhanVien;
+	}
+
+	public Boolean getTrangThai() {
+		return trangThai;
+	}
+
+	public void setTrangThai(Boolean trangThai) {
+		this.trangThai = trangThai;
 	}
 }

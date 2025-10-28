@@ -36,8 +36,10 @@
 														th:value="${taiKhoan.tenDangNhap}" />
 													<button class="mt-3 btn btn-outline-info">Sửa</button>
 												</form>
-												<form th:action="@{/admin/nguoidung/delete}" method="post">
-													<button class="mt-3 btn btn-outline-danger">Xóa</button>
+												<form th:action="@{/admin/nguoidung/show}" method="post">
+												<input type="hidden" name="tenDangNhap"
+                                                        th:value="${taiKhoan.tenDangNhap}" />
+													<button th:class="${taiKhoan.trangThai ? 'mt-3 btn btn-outline-warning' : 'mt-3 btn btn-outline-danger'}"><i th:class="${taiKhoan.trangThai ? 'fa fa-unlock' : 'fa fa-lock'}"></i><span th:text="${taiKhoan.trangThai ? 'Đang hoạt động' : 'Đã bị khoá'}"></span></button>
 												</form>
 											</div>
 											<div class="media-title">

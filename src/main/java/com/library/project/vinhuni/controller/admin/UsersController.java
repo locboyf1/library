@@ -71,7 +71,7 @@ public class UsersController {
 		taiKhoan.setTenDangNhap(userNhanVien.getTenDangNhap());
 
 		taiKhoanRepository.save(taiKhoan);
-		return "redirect:/admin/users";
+		return "redirect:/admin/nguoidung";
 	}
 
 	@PostMapping("/create/docgia")
@@ -90,7 +90,7 @@ public class UsersController {
 		taiKhoan.setTenDangNhap(userDocGia.getTenDangNhap());
 
 		taiKhoanRepository.save(taiKhoan);
-		return "redirect:/admin/users";
+		return "redirect:/admin/nguoidung";
 	}
 
 	@PostMapping("/update")
@@ -126,7 +126,7 @@ public class UsersController {
 
 		taiKhoanRepository.save(taiKhoan);
 
-		return "redirect:/admin/users";
+		return "redirect:/admin/nguoidung";
 	}
 
 	@PostMapping("/update/docgia")
@@ -141,7 +141,12 @@ public class UsersController {
 		taiKhoan.setLoaiTaiKhoan("docgia");
 
 		taiKhoanRepository.save(taiKhoan);
-		return "redirect:/admin/users";
+		return "redirect:/admin/nguoidung";
 	}
 
+	@PostMapping("/show")
+	public String show(@ModelAttribute("tenDangNhap") String tenDangNhap, Model model) {
+		taiKhoanService.show(tenDangNhap);
+		return "redirect:/admin/nguoidung";
+	}
 }

@@ -1,7 +1,7 @@
 <html layout:decorate="~{content/layout}">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Thư viện trực tuyến</title>
 </head>
 <body>
 	<div layout:fragment="content">
@@ -12,32 +12,20 @@
 				<div class="row align-items-center">
 					<div class="col-lg-6">
 						<div class="bj_banner_content_three">
-							<h2 class="banner_title wow fadeInUp" data-wow-delay="0.2s">The
-								Best Online Book Shop</h2>
-							<p class="wow fadeInUp" data-wow-delay="0.3s">Bookjar
-								specifically created for authors and writes to present and sell
-								their books online Soufflé tart sweet.</p>
-							<form action="#" class="search_form wow fadeInUp"
-								data-wow-delay="0.4s">
-								<input type="text" placeholder="Search for books"
-									class="form-control">
-								<button type="submit" class="search_btn">
-									<i class="ti-search"></i>
-								</button>
+							<h2 class="banner_title wow fadeInUp" data-wow-delay="0.2s">Thư viện trực tuyến - Mượn và Trả sách</h2>
+							<p class="wow fadeInUp" data-wow-delay="0.3s">Hệ thống thư viện trực tuyến giúp bạn tìm, mượn và trả sách dễ dàng. Tìm kiếm nhanh, quản lý mượn trả thuận tiện.</p>
+							<form action="#" class="search_form wow fadeInUp" data-wow-delay="0.4s">
+								<input type="text" placeholder="Tìm sách theo tiêu đề, tác giả hoặc ISBN" class="form-control">
+								<button type="submit" class="search_btn">Tìm <i class="ti-search"></i></button>
 							</form>
-							<h5 class="wow fadeInUp" data-wow-delay="0.5s">Buy 3+ to
-								save 25%</h5>
+							<h5 class="wow fadeInUp" data-wow-delay="0.5s">Mượn 3 cuốn trở lên - tiết kiệm 25%</h5>
 						</div>
 					</div>
 					<div class="col-lg-6">
 						<div class="banner_shop_img">
-							<img class="wow fadeInRight" data-wow-delay="0.3s"
-								th:src="@{/assets/img/home-three/banner/shop-img.png}" alt=""> <img
-								class="round" data-parallax='{"x": -10, "y": -80}'
-								th:src="@{/assets/img/home-three/banner/round.png}" alt="">
+							<img class="wow fadeInRight" data-wow-delay="0.3s" th:src="@{/assets/img/home-three/banner/shop-img.png}" alt=""> <img class="round" data-parallax='{"x": -10, "y": -80}' th:src="@{/assets/img/home-three/banner/round.png}" alt="">
 							<div class="women wow fadeInLeft" data-wow-delay="0.5s">
-								<img data-parallax='{"x":-50, "y": -20}'
-									th:src="@{/assets/img/home-three/banner/women-img.png}" alt="">
+								<img data-parallax='{"x":-50, "y": -20}' th:src="@{/assets/img/home-three/banner/women-img.png}" alt="">
 							</div>
 						</div>
 					</div>
@@ -49,6 +37,27 @@
 					<a href="#" class="clients_logo_item wow fadeInUp" data-wow-delay="0.5s"><img th:src="@{/assets/img/home-three/banner/clients-logo4.png}" alt=""></a>
 					<a href="#" class="clients_logo_item wow fadeInUp" data-wow-delay="0.6s"><img th:src="@{/assets/img/home-three/banner/clients-logo5.png}" alt=""></a>
 					<a href="#" class="clients_logo_item wow fadeInUp" data-wow-delay="0.7s"><img th:src="@{/assets/img/home-three/banner/clients-logo6.png}" alt=""></a>
+				</div>
+
+				<!-- Giao diện mượn/trả sách: form nhanh -->
+				<div class="borrow_return_panel mt-4 wow fadeInUp" data-wow-delay="0.6s">
+					<div class="row justify-content-center">
+						<div class="col-lg-8">
+							<div class="card p-3">
+								<h4>Giao diện mượn / trả sách</h4>
+								<form action="#" class="d-flex gap-2 align-items-center">
+									<input type="text" class="form-control" placeholder="Mã sách hoặc tiêu đề">
+									<select class="form-control" style="max-width:160px;">
+										<option value="borrow">Mượn</option>
+										<option value="return">Trả</option>
+									</select>
+									<input type="text" class="form-control" placeholder="Mã người mượn (Tùy chọn)">
+									<button type="submit" class="bj_theme_btn strock_btn">Xác nhận</button>
+								</form>
+								<p class="mt-2 mb-0 text-muted">Ghi chú: Hệ thống sẽ hướng dẫn quy trình mượn/trả sau khi xác nhận.</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -64,15 +73,12 @@
 					<div class="col-lg-6">
 						<div class="pr_introduce_content wow fadeInRight"
 							data-wow-delay="0.4s">
-							<h5>INTRODUCING</h5>
-							<h2 class="title">A simple subscription for all your books</h2>
-							<p>Most students can't afford to buy textbooks. Get unlimited
-								access to all of your learning resources, whenever you need
-								them, at a price that works for you. Choose a flexible monthly
-								plan, or save money on an annual subscription.</p>
+							<h5>GIỚI THIỆU</h5>
+							<h2 class="title">Đăng ký đơn giản cho mọi sách của bạn</h2>
+							<p>Hầu hết sinh viên không có khả năng mua sách giáo khoa. Truy cập không giới hạn vào tài liệu học tập bất cứ khi nào bạn cần, với mức giá phù hợp. Chọn gói tháng linh hoạt hoặc tiết kiệm hơn với gói năm.</p>
 							<div class="d-flex align-items-center">
-								<a href="#" class="bj_theme_btn">Start free trial</a> <a
-									href="#" class="bj_theme_btn text_btn">View pricing</a>
+								<a href="#" class="bj_theme_btn">Dùng thử miễn phí</a> <a
+									href="#" class="bj_theme_btn text_btn">Xem giá</a>
 							</div>
 						</div>
 					</div>
@@ -86,13 +92,13 @@
 				<div class="row align-items-center">
 					<div class="col-lg-9">
 						<div class="section_title wow fadeInLeft" data-wow-delay="0.2s">
-							<h2 class="title">Recent best selling books</h2>
+							<h2 class="title">Sách bán chạy gần đây</h2>
 						</div>
 					</div>
 					<div class="col-lg-3 text-end wow fadeInRight"
 						data-wow-delay="0.3s">
-						<a th:href="@{/book-listing}" class="bj_theme_btn_two style_two">View
-							All <i class="arrow_right"></i>
+						<a th:href="@{/book-listing}" class="bj_theme_btn_two style_two">Xem
+							Tất cả <i class="arrow_right"></i>
 						</a>
 					</div>
 				</div>
@@ -184,8 +190,8 @@
 			<div class="container">
 				<div class="section_title text-center wow fadeInUp"
 					data-wow-delay="0.2s">
-					<h2 class="title">Go beyond your reading list</h2>
-					<p>with a variety of 100+ topics  subtopics to explore</p>
+					<h2 class="title">Mở rộng danh sách đọc của bạn</h2>
+					<p>với hơn 100+ chủ đề và chuyên đề để khám phá</p>
 				</div>
 				<div class="row">
 					<div class="col-lg-3 col-md-4 col-sm-6">
@@ -193,9 +199,9 @@
 							<img src="assets/img/home-three/architecture.png" alt="">
 							<div class="text">
 								<a href="shop-sidebar.html">
-									<h5>Architecture</h5>
+									<h5>Kiến trúc</h5>
 								</a>
-								<p>512 books</p>
+								<p>512 sách</p>
 							</div>
 						</div>
 					</div>
@@ -204,9 +210,9 @@
 							<img src="assets/img/home-three/design.png" alt="">
 							<div class="text">
 								<a href="shop-sidebar.html">
-									<h5>Design</h5>
+									<h5>Thiết kế</h5>
 								</a>
-								<p>512 books</p>
+								<p>512 sách</p>
 							</div>
 						</div>
 					</div>
@@ -215,9 +221,9 @@
 							<img src="assets/img/home-three/bio.png" alt="">
 							<div class="text">
 								<a href="shop-sidebar.html">
-									<h5>Architecture</h5>
+									<h5>Tiểu sử</h5>
 								</a>
-								<p>512 books</p>
+								<p>512 sách</p>
 							</div>
 						</div>
 					</div>
@@ -226,9 +232,9 @@
 							<img src="assets/img/home-three/economics.png" alt="">
 							<div class="text">
 								<a href="shop-sidebar.html">
-									<h5>Economics</h5>
+									<h5>Kinh tế</h5>
 								</a>
-								<p>512 books</p>
+								<p>512 sách</p>
 							</div>
 						</div>
 					</div>
@@ -237,9 +243,9 @@
 							<img src="assets/img/home-three/bag.png" alt="">
 							<div class="text">
 								<a href="shop-sidebar.html">
-									<h5>Business</h5>
+									<h5>Doanh nhân</h5>
 								</a>
-								<p>512 books</p>
+								<p>512 sách</p>
 							</div>
 						</div>
 					</div>
@@ -248,9 +254,9 @@
 							<img src="assets/img/home-three/education.png" alt="">
 							<div class="text">
 								<a href="shop-sidebar.html">
-									<h5>Education</h5>
+									<h5>Giáo dục</h5>
 								</a>
-								<p>512 books</p>
+								<p>512 sách</p>
 							</div>
 						</div>
 					</div>
@@ -259,9 +265,9 @@
 							<img src="assets/img/home-three/art.png" alt="">
 							<div class="text">
 								<a href="shop-sidebar.html">
-									<h5>Art</h5>
+									<h5>Nghệ thuật</h5>
 								</a>
-								<p>512 books</p>
+								<p>512 sách</p>
 							</div>
 						</div>
 					</div>
@@ -270,9 +276,9 @@
 							<img src="assets/img/home-three/history.png" alt="">
 							<div class="text">
 								<a href="shop-sidebar.html">
-									<h5>History</h5>
+									<h5>Lịch sử</h5>
 								</a>
-								<p>512 books</p>
+								<p>512 sách</p>
 							</div>
 						</div>
 					</div>
@@ -286,8 +292,8 @@
 				<div class="row align-items-center">
 					<div class="col-lg-7">
 						<div class="section_title wow fadeInLeft">
-							<h2 class="title">People's Choice</h2>
-							<p>The most recent books that arrived in our bookstore.</p>
+							<h2 class="title">Lựa chọn của bạn đọc</h2>
+							<p>Những cuốn sách mới nhất vừa có tại thư viện của chúng tôi.</p>
 						</div>
 					</div>
 					<div class="col-lg-5">
@@ -297,17 +303,17 @@
 							<li role="presentation" class="nav-item"><a
 								class="nav-link active" id="pills-best-tab"
 								data-bs-toggle="pill" data-bs-target="#pills-best" role="tab"
-								aria-controls="pills-best" aria-selected="true"> Bestseller</a>
+								aria-controls="pills-best" aria-selected="true">Bán chạy</a>
 							</li>
 							<li role="presentation" class="nav-item"><a class="nav-link"
 								id="pills-offer-tab" data-bs-toggle="pill"
 								data-bs-target="#pills-offer" role="tab"
-								aria-controls="pills-offer" aria-selected="false">Top Rating</a>
+								aria-controls="pills-offer" aria-selected="false">Đánh giá cao</a>
 							</li>
 							<li role="presentation" class="nav-item"><a class="nav-link"
 								id="pills-featured-tab" data-bs-toggle="pill"
 								data-bs-target="#pills-featured" role="tab"
-								aria-controls="pills-featured" aria-selected="false">Latest</a>
+								aria-controls="pills-featured" aria-selected="false">Mới nhất</a>
 							</li>
 						</ul>
 					</div>
@@ -647,6 +653,47 @@
 									</div>
 								</div>
 							</div>
+
+							<div class="col-lg-3 col-md-4 col-sm-6">
+								<div class="best_product_item best_product_item_two box-shadow">
+									<div class="img">
+										<a href="#"><img src="assets/img/home-two/choice4.jpg"
+											alt="book"></a>
+										<div class="hover_item">
+											<a class="quick_button" href="my-wishlist.html"
+												data-bs-toggle="tooltip" data-bs-placement="right"
+												title="Wishlist"><i class="icon_heart_alt"></i></a> <span
+												data-bs-toggle="tooltip" data-bs-placement="right"
+												title="Quickview"><button class="quick_button"
+													data-bs-toggle="modal" data-bs-target="#productQuickView">
+													<i class="arrow_move"></i>
+												</button></span> <a class="quick_button" href="#" data-bs-toggle="tooltip"
+												data-bs-placement="right" title="Compare"><i
+												class="ti-control-shuffle"></i></a>
+										</div>
+										<button type="button"
+											class="bj_theme_btn add-to-cart-automated"
+											data-name="Create Your Own Bustiness"
+											data-img="assets/img/home-two/choice4.jpg" data-price="25">
+											<i class="icon_cart_alt"></i>Add to Cart
+										</button>
+									</div>
+									<div class="bj_new_pr_content">
+										<a href="product-single.html">
+											<h4 class="bj_new_pr_title">Create Your Own Bustiness</h4>
+										</a>
+										<div class="writer_name">
+											By -<a href="author-single.html"> Muaz Bk </a>
+										</div>
+										<div class="bj_pr_meta d-flex">
+											<div class="book_price">$25</div>
+											<div class="ratting">
+												<img src="assets/img/home/raiting.png" alt=""> 1221
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="tab-pane fade explore-menu" id="pills-featured"
@@ -821,7 +868,7 @@
 				</div>
 				<div class="text-center mt-5">
 					<a href="shop.html" class="bj_theme_btn strock_btn wow fadeInUp"
-						data-wow-delay="0.4s">View More <i class="arrow_right"></i></a>
+						data-wow-delay="0.4s">Xem thêm <i class="arrow_right"></i></a>
 				</div>
 			</div>
 		</section>
@@ -851,52 +898,49 @@
 			<div class="container">
 				<div class="section_title text-center wow fadeInUp"
 					data-wow-delay="0.2s">
-					<h2 class="title">Start reading for free</h2>
-					<p>Cancel anytime. We'll remind you before you pay anything.</p>
+					<h2 class="title">Bắt đầu đọc miễn phí</h2>
+					<p>Hủy bất cứ lúc nào. Chúng tôi sẽ nhắc bạn trước khi tính phí.</p>
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-lg-4 col-md-6">
 						<div class="book_price_item text-center wow fadeInUp"
 							data-wow-delay="0.3s">
-							<h5>MONTHLY</h5>
+							<h5>HẰNG THÁNG</h5>
 							<div class="price">
 								<sup>$</sup>6.5<sub>USD</sub>
 							</div>
-							<p>Billed monthly, cancel any time</p>
+							<p>Thanh toán theo tháng, có thể hủy bất cứ lúc nào</p>
 							<ul class="list-unstyled">
-								<li>Excepteur sint occaecat</li>
-								<li>Nor again is there</li>
-								<li>Et harum quidem</li>
-								<li>Quis autem vel eum</li>
+								<li>Truy cập không giới hạn</li>
+								<li>Hỗ trợ trực tuyến</li>
+								<li>Tài khoản đa thiết bị</li>
+								<li>Ưu đãi thành viên</li>
 							</ul>
-							<a href="#" class="bj_theme_btn strock_btn">Start 14-Day Free
-								Trial</a>
+							<a href="#" class="bj_theme_btn strock_btn">Bắt đầu dùng thử 14 ngày</a>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6">
 						<div class="book_price_item text-center wow fadeInUp"
 							data-wow-delay="0.4s">
-							<h5>YEARLY</h5>
+							<h5>HẰNG NĂM</h5>
 							<div class="price">
 								<sup>$</sup>4.17<sub>USD</sub>
 							</div>
-							<p>$50 billed annually</p>
+							<p>$50 thanh toán hàng năm</p>
 							<ul class="list-unstyled">
-								<li>Excepteur sint occaecat</li>
-								<li>Nor again is there</li>
-								<li>Et harum quidem</li>
-								<li>Quis autem vel eum</li>
+								<li>Truy cập không giới hạn</li>
+								<li>Hỗ trợ ưu tiên</li>
+								<li>Lưu trữ ngoại tuyến</li>
+								<li>Tiết kiệm lớn</li>
 							</ul>
-							<a href="#" class="bj_theme_btn strock_btn">Start 14-Day Free
-								Trial</a>
+							<a href="#" class="bj_theme_btn strock_btn">Bắt đầu dùng thử 14 ngày</a>
 						</div>
 					</div>
 				</div>
 				<div class="text-center">
 					<p class="p_text wow fadeInUp" data-wow-delay="0.4s">
-						After your free trial, you'll auto-enroll in your selected plan.<br>
-						Change or <a href="#">cancel anytime</a> during your trial to not
-						be charged.
+						Sau khi kết thúc giai đoạn dùng thử, bạn sẽ được đăng ký tự động vào gói đã chọn.<br>
+						Thay đổi hoặc <a href="#">hủy bất cứ lúc nào</a> trong thời gian dùng thử để không bị tính phí.
 					</p>
 				</div>
 			</div>
@@ -908,8 +952,8 @@
 			<div class="container">
 				<div class="section_title text-center wow fadeInUp"
 					data-wow-delay="0.2s">
-					<h2 class="title">Articles  Tips</h2>
-					<p>Browse the latest articles and tips from our blog.</p>
+					<h2 class="title">Bài viết &amp; Mẹo</h2>
+					<p>Duyệt các bài viết và mẹo mới nhất từ blog của chúng tôi.</p>
 				</div>
 				<div class="row">
 					<div class="col-lg-4 col-md-6">
@@ -982,6 +1026,28 @@
 			</div>
 		</section>
 		<!-- bj blog area -->
+		<!-- thêm script đơn giản xử lý form mượn/trả -->
+		<script>
+		// Khi form mượn/trả được submit, hiển thị xác nhận tạm thời trong giao diện
+		document.addEventListener('DOMContentLoaded', function(){
+			var form = document.querySelector('.borrow_return_panel form');
+			if(form){
+				form.addEventListener('submit', function(e){
+					e.preventDefault();
+					var code = form.querySelector('input[placeholder="Mã sách hoặc tiêu đề"]').value.trim();
+					var action = form.querySelector('select').value;
+					var user = form.querySelector('input[placeholder^="Mã người"]').value.trim();
+					var card = form.closest('.card');
+					if(!code){
+						alert('Vui lòng nhập mã sách hoặc tiêu đề.');
+						return;
+					}
+					// Hiển thị thông báo xác nhận (thay bằng gọi API ở backend)
+					card.innerHTML = '<div class="p-3"><h5>Yêu cầu đã được gửi</h5><p>Hành động: ' + (action=='borrow'? 'Mượn' : 'Trả') + '<br>Sách: ' + code + '<br>Người mượn: ' + (user || 'Không cung cấp') + '</p><p class="text-muted">Hệ thống sẽ xử lý và thông báo trạng thái.</p><a href="javascript:location.reload()" class="bj_theme_btn strock_btn">Quay lại</a></div>';
+				});
+			}
+		});
+		</script>
 	</div>
 </body>
 </html>
