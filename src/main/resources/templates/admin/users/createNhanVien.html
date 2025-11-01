@@ -4,7 +4,7 @@
 	layout:decorate="~{admin/layout}">
 <head>
 <meta charset="UTF-8">
-<title>Sửa thông tin người dùng</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<section class="section" layout:fragment="content">
@@ -13,24 +13,28 @@
 				<div class="col-12 col-md-12 col-lg-12">
 					<div class="card">
 						<div class="card-header">
-							<h4>Sửa thông tin tài khoản</h4>
+							<h4>Nhập thông tin tài khoản</h4>
 						</div>
 
 						<div class="card-body">
-							<form th:action="@{/admin/nguoidung/update/docgia}" method="post"
-								id="docGiaForm" th:object="${user}">
-								<input type="hidden" name="maDocGia" th:value="${maDocGia}" />
-									<input type="hidden" name="matKhau" th:value="12345678" />
+							<form th:action="@{/admin/nguoidung/create/nhanvien}"
+								method="post" id="nhanVienForm" th:object="${userNhanVien}">
 								<div class="form-group">
 									<label>Tên đăng nhập</label> <input type="text"
-										th:field="*{tenDangNhap}" class="form-control" readonly="readonly">
-										
+										th:field="*{tenDangNhap}" class="form-control">
+										<div th:if="${#fields.hasErrors('tenDangNhap')}" class="text-danger" th:errors="*{tenDangNhap}"></div>
 								</div>
 
 								<div class="form-group">
-									<label>Tên độc giả</label> <input type="text"
-										th:field="*{tenDocGia}" class="form-control">
-										<div th:if="${#fields.hasErrors('tenDocGia')}" class="text-danger" th:errors="*{tenDocGia}"></div>
+									<label>Mật khẩu</label> <input type="password"
+										th:field="*{matKhau}" class="form-control">
+										<div th:if="${#fields.hasErrors('matKhau')}" class="text-danger" th:errors="*{matKhau}"></div>
+								</div>
+
+								<div class="form-group">
+									<label>Tên nhân viên</label> <input type="text"
+										th:field="*{tenNhanVien}" class="form-control">
+										<div th:if="${#fields.hasErrors('tenNhanVien')}" class="text-danger" th:errors="*{tenNhanVien}"></div>
 								</div>
 
 								<div class="form-group">
@@ -46,9 +50,10 @@
 								</div>
 
 								<div class="form-group">
-									<label>Lớp</label> <input type="text" th:field="*{lop}"
+									<label>Chức vụ</label> <input type="text" th:field="*{chucVu}"
 										class="form-control">
-										<div th:if="${#fields.hasErrors('lop')}" class="text-danger" th:errors="*{lop}"></div>
+										<div th:if="${#fields.hasErrors('chucVu')}" class="text-danger" th:errors="*{chucVu}"></div>
+
 								</div>
 
 								<div class="form-group">
@@ -63,12 +68,12 @@
 										<a th:href="@{/admin/nguoidung}" class="btn btn-secondary">Quay lại</a>
 								</div>
 							</form>
-
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 	</section>
 </body>
 </html>

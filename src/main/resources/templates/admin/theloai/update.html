@@ -22,10 +22,12 @@
 							<div class="form-group">
 								<label>Tên thể loại</label> <input type="text"
 									class="form-control" th:field="*{tenTheLoai}">
+									<div class="text-danger" th:if="${#fields.hasErrors('tenTheLoai')}" th:errors="*{tenTheLoai}" ></div>
 							</div>
 							<div class="form-group">
 								<label>Mô tả</label>
 								<textarea class="form-control" th:field="*{moTa}"></textarea>
+								<div class="text-danger" th:if="${#fields.hasErrors('moTa')}" th:errors="*{moTa}" ></div>
 							</div>
 							<div class="form-group">
 								<label class="d-block">Hiện</label>
@@ -38,7 +40,7 @@
 							</div>
 							<div class="card-footer text-right">
 								<button class="btn btn-primary mr-1" type="submit">Lưu</button>
-								<button class="btn btn-secondary" type="reset">Xóa</button>
+													<a class="btn btn-secondary" th:href="@{/admin/theloai}">Quay lại</a>
 							</div>
 						</form>
 

@@ -23,7 +23,7 @@ public class TaiKhoan {
 	@Column(name = "TenDangNhap", length = 50)
 	private String tenDangNhap;
 
-	@Column(name = "MatKhau", length = 255)
+	@Column(name = "MatKhau", length = 255, nullable = false)
 	private String matKhau;
 
 	@Column(name = "LoaiTaiKhoan", length = 20)

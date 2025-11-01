@@ -5,16 +5,30 @@ import java.time.LocalDate;
 import com.library.project.vinhuni.entity.NhanVien;
 import com.library.project.vinhuni.entity.TaiKhoan;
 
-public class NhanVienDto {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
+public class NhanVienDto {
+	@NotBlank(message = "Tên hiển thị không được để trống")
+	@Size(max = 100, message = "Tên hiển thị không để quá dài")
 	private String tenNhanVien;
+	@NotBlank(message = "Địa chỉ không được để trống")
+	@Size(max = 255, message = "Địa chỉ không để quá dài")
 	private String diaChi;
+	@Size(max = 20, message = "Số điện thoại không để quá dài")
 	private String soDt;
 	private String gioiTinh;
 	private LocalDate ngaySinh;
+	@NotBlank(message = "Chức vụ không được để trống")
+	@Size(max = 50, message = "Chức vụ không để quá dài")
 	private String chucVu;
 
+	@NotBlank(message = "Tên đăng nhập không được để trống")
+	@Size(max = 50, message = "Tên đăng nhập không để quá dài")
 	private String tenDangNhap;
+
+	@NotBlank(message = "Mật khẩu không được để trống")
+	@Size(min = 8, max = 16, message = "Mật khẩu phải từ 8 đến 16 ký tự")
 	private String matKhau;
 
 	public String getTenNhanVien() {

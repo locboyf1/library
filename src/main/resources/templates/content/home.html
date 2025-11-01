@@ -1,60 +1,76 @@
-<html layout:decorate="~{content/layout}">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{content/layout}">
 <head>
 <meta charset="UTF-8">
 <title>Thư viện trực tuyến</title>
 </head>
 <body>
 	<div layout:fragment="content">
-		<!-- banner area  -->
 		<section class="banner_area_three banner_animation_03"
 			data-bg-color="#CDF0F0">
 			<div class="container">
 				<div class="row align-items-center">
 					<div class="col-lg-6">
 						<div class="bj_banner_content_three">
-							<h2 class="banner_title wow fadeInUp" data-wow-delay="0.2s">Thư viện trực tuyến - Mượn và Trả sách</h2>
-							<p class="wow fadeInUp" data-wow-delay="0.3s">Hệ thống thư viện trực tuyến giúp bạn tìm, mượn và trả sách dễ dàng. Tìm kiếm nhanh, quản lý mượn trả thuận tiện.</p>
-							<form action="#" class="search_form wow fadeInUp" data-wow-delay="0.4s">
-								<input type="text" placeholder="Tìm sách theo tiêu đề, tác giả hoặc ISBN" class="form-control">
-								<button type="submit" class="search_btn">Tìm <i class="ti-search"></i></button>
+							<h2 class="banner_title wow fadeInUp" data-wow-delay="0.2s">Thư
+								viện trực tuyến - Mượn và Trả sách</h2>
+							<p class="wow fadeInUp" data-wow-delay="0.3s">Hệ thống thư
+								viện trực tuyến giúp bạn tìm, mượn và trả sách dễ dàng. Tìm kiếm
+								nhanh, quản lý mượn trả thuận tiện.</p>
+							<form action="#" class="search_form wow fadeInUp"
+								data-wow-delay="0.4s">
+								<input type="text"
+									placeholder="Tìm sách theo tiêu đề, tác giả hoặc ISBN"
+									class="form-control">
+								<button type="submit" class="search_btn">
+									Tìm <i class="ti-search"></i>
+								</button>
 							</form>
-							<h5 class="wow fadeInUp" data-wow-delay="0.5s">Mượn 3 cuốn trở lên - có thể trở thành người đọc tiềm năng</h5>
+							<h5 class="wow fadeInUp" data-wow-delay="0.5s">Mượn 3 cuốn
+								trở lên - có thể trở thành người đọc tiềm năng</h5>
 						</div>
 					</div>
 					<div class="col-lg-6">
 						<div class="banner_shop_img">
-							<img class="wow fadeInRight" data-wow-delay="0.3s" th:src="@{/assets/img/home-three/banner/shop-img.png}" alt=""> <img class="round" data-parallax='{"x": -10, "y": -80}' th:src="@{/assets/img/home-three/banner/round.png}" alt="">
+							<img class="wow fadeInRight" data-wow-delay="0.3s"
+								th:src="@{/assets/img/home-three/banner/shop-img.png}" alt="">
+							<img class="round" data-parallax='{"x": -10, "y": -80}'
+								th:src="@{/assets/img/home-three/banner/round.png}" alt="">
 							<div class="women wow fadeInLeft" data-wow-delay="0.5s">
-								<img data-parallax='{"x":-50, "y": -20}' th:src="@{/assets/img/home-three/banner/women-img.png}" alt="">
+								<img data-parallax='{"x":-50, "y": -20}'
+									th:src="@{/assets/img/home-three/banner/women-img.png}" alt="">
 							</div>
 						</div>
 					</div>
 				</div>
-				
 
-				<!-- Giao diện mượn/trả sách: form nhanh -->
-				<div class="borrow_return_panel mt-4 wow fadeInUp" data-wow-delay="0.6s">
+
+				<div class="borrow_return_panel mt-4 wow fadeInUp"
+					data-wow-delay="0.6s">
 					<div class="row justify-content-center">
 						<div class="col-lg-8">
 							<div class="card p-3">
 								<h4>Giao diện mượn / trả sách</h4>
 								<form action="#" class="d-flex gap-2 align-items-center">
-									<input type="text" class="form-control" placeholder="Mã sách hoặc tiêu đề">
-									<select class="form-control" style="max-width:160px;">
+									<input type="text" class="form-control"
+										placeholder="Mã sách hoặc tiêu đề"> <select
+										class="form-control" style="max-width: 160px;">
 										<option value="borrow">Mượn</option>
 										<option value="return">Trả</option>
-									</select>
-									<input type="text" class="form-control" placeholder="Mã người mượn (Tùy chọn)">
-									<button type="submit" class="bj_theme_btn strock_btn">Xác nhận</button>
+									</select> <input type="text" class="form-control"
+										placeholder="Mã người mượn (Tùy chọn)">
+									<button type="submit" class="bj_theme_btn strock_btn">Xác
+										nhận</button>
 								</form>
-								<p class="mt-2 mb-0 text-muted">Ghi chú: Hệ thống sẽ hướng dẫn quy trình mượn/trả sau khi xác nhận.</p>
+								<p class="mt-2 mb-0 text-muted">Ghi chú: Hệ thống sẽ hướng
+									dẫn quy trình mượn/trả sau khi xác nhận.</p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<!-- banner area  -->
 		<section class="product_introduce_area sec_padding"
 			data-bg-color="#f5f5f5">
 			<div class="container">
@@ -68,9 +84,12 @@
 							data-wow-delay="0.4s">
 							<h5>GIỚI THIỆU</h5>
 							<h2 class="title">Đăng ký đơn giản cho mọi sách của bạn</h2>
-							<p>Hầu hết sinh viên không có khả năng mua sách giáo khoa. Truy cập không giới hạn vào tài liệu học tập bất cứ khi nào bạn cần, với mức giá phù hợp. Chọn gói tháng linh hoạt hoặc tiết kiệm hơn với gói năm.</p>
+							<p>Hầu hết sinh viên không có khả năng mua sách giáo khoa.
+								Truy cập không giới hạn vào tài liệu học tập bất cứ khi nào bạn
+								cần, với mức giá phù hợp. Chọn gói tháng linh hoạt hoặc tiết
+								kiệm hơn với gói năm.</p>
 							<div class="d-flex align-items-center">
-								<a href="#" class="bj_theme_btn">Mượn ngay</a> <a
+								<a th:href="@{/}" class="bj_theme_btn">Mượn ngay</a>
 							</div>
 						</div>
 					</div>
@@ -78,7 +97,6 @@
 			</div>
 		</section>
 
-		<!-- bj best book area  -->
 		<section class="bj_best_book_area_two sec_padding">
 			<div class="container">
 				<div class="row align-items-center">
@@ -116,7 +134,8 @@
 											th:src="@{/assets/img/home/raiting.png}" alt="">
 									</div>
 								</div>
-								<a th:href="@{/checkout}" class="bj_theme_btn strock_btn">Mượn ngay</a>
+								<a th:href="@{/checkout}" class="bj_theme_btn strock_btn">Mượn
+									ngay</a>
 							</div>
 						</div>
 					</div>
@@ -141,40 +160,40 @@
 											th:src="@{/assets/img/home/raiting.png}" alt="">
 									</div>
 								</div>
-								<a href="checkout.html" class="bj_theme_btn strock_btn">Mượn ngay</a>
+								<a th:href="@{/checkout}" class="bj_theme_btn strock_btn">Mượn
+									ngay</a>
 							</div>
 						</div>
 					</div>
 					<div class="col-xl-4 col-6">
 						<div class="bj_best_book_item wow fadeInUp" data-wow-delay="0.4s">
 							<div class="bj_book_img">
-								<img src="assets/img/home-three/best_book3.jpg" alt="">
+								<img th:src="@{/assets/img/home-three/best_book3.jpg}" alt="">
 							</div>
 							<div class="text">
-								<a href="product-single.html">
+								<a th:href="@{/product-single}">
 									<h4 class="bj_new_pr_title">The Art of Fashion</h4>
 								</a>
 								<div class="bj_pr_meta">
 									<div class="writer_name">
-										<a href="author-single.html">Phillip Calzoni </a>
+										<a th:href="@{/author-single}">Phillip Calzoni </a>
 									</div>
 									<div class="ratting">
-										<img src="assets/img/home/raiting.png" alt=""> <img
-											src="assets/img/home/raiting.png" alt=""> <img
-											src="assets/img/home/raiting.png" alt=""> <img
-											src="assets/img/home/raiting.png" alt=""> <img
-											src="assets/img/home/raiting.png" alt="">
+										<img th:src="@{/assets/img/home/raiting.png}" alt=""> <img
+											th:src="@{/assets/img/home/raiting.png}" alt=""> <img
+											th:src="@{/assets/img/home/raiting.png}" alt=""> <img
+											th:src="@{/assets/img/home/raiting.png}" alt=""> <img
+											th:src="@{/assets/img/home/raiting.png}" alt="">
 									</div>
 								</div>
-								<a href="checkout.html" class="bj_theme_btn strock_btn">Mượn ngay</a>
+								<a th:href="@{/checkout}" class="bj_theme_btn strock_btn">Mượn
+									ngay</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<!-- bj best book area  -->
-		<!-- book list area  -->
 		<section class="booklist_area sec_padding" data-bg-color="#f5f5f5">
 			<div class="container">
 				<div class="section_title text-center wow fadeInUp"
@@ -185,9 +204,9 @@
 				<div class="row">
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="booklist_item wow fadeInUp" data-wow-delay="0.2s">
-							<img src="assets/img/home-three/architecture.png" alt="">
+							<img th:src="@{/assets/img/home-three/architecture.png}" alt="">
 							<div class="text">
-								<a href="shop-sidebar.html">
+								<a th:href="@{/shop-sidebar}">
 									<h5>Kiến trúc</h5>
 								</a>
 								<p>512 sách</p>
@@ -196,9 +215,9 @@
 					</div>
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="booklist_item wow fadeInUp" data-wow-delay="0.3s">
-							<img src="assets/img/home-three/design.png" alt="">
+							<img th:src="@{/assets/img/home-three/design.png}" alt="">
 							<div class="text">
-								<a href="shop-sidebar.html">
+								<a th:href="@{/shop-sidebar}">
 									<h5>Thiết kế</h5>
 								</a>
 								<p>512 sách</p>
@@ -207,9 +226,9 @@
 					</div>
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="booklist_item wow fadeInUp" data-wow-delay="0.4s">
-							<img src="assets/img/home-three/bio.png" alt="">
+							<img th:src="@{/assets/img/home-three/bio.png}" alt="">
 							<div class="text">
-								<a href="shop-sidebar.html">
+								<a th:href="@{/shop-sidebar}">
 									<h5>Tiểu sử</h5>
 								</a>
 								<p>512 sách</p>
@@ -218,9 +237,9 @@
 					</div>
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="booklist_item wow fadeInUp" data-wow-delay="0.5s">
-							<img src="assets/img/home-three/economics.png" alt="">
+							<img th:src="@{/assets/img/home-three/economics.png}" alt="">
 							<div class="text">
-								<a href="shop-sidebar.html">
+								<a th:href="@{/shop-sidebar}">
 									<h5>Kinh tế</h5>
 								</a>
 								<p>512 sách</p>
@@ -229,9 +248,9 @@
 					</div>
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="booklist_item wow fadeInUp" data-wow-delay="0.6s">
-							<img src="assets/img/home-three/bag.png" alt="">
+							<img th:src="@{/assets/img/home-three/bag.png}" alt="">
 							<div class="text">
-								<a href="shop-sidebar.html">
+								<a th:href="@{/shop-sidebar}">
 									<h5>Doanh nhân</h5>
 								</a>
 								<p>512 sách</p>
@@ -240,9 +259,9 @@
 					</div>
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="booklist_item wow fadeInUp" data-wow-delay="0.7s">
-							<img src="assets/img/home-three/education.png" alt="">
+							<img th:src="@{/assets/img/home-three/education.png}" alt="">
 							<div class="text">
-								<a href="shop-sidebar.html">
+								<a th:href="@{/shop-sidebar}">
 									<h5>Giáo dục</h5>
 								</a>
 								<p>512 sách</p>
@@ -251,9 +270,9 @@
 					</div>
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="booklist_item wow fadeInUp" data-wow-delay="0.8s">
-							<img src="assets/img/home-three/art.png" alt="">
+							<img th:src="@{/assets/img/home-three/art.png}" alt="">
 							<div class="text">
-								<a href="shop-sidebar.html">
+								<a th:href="@{/shop-sidebar}">
 									<h5>Nghệ thuật</h5>
 								</a>
 								<p>512 sách</p>
@@ -262,9 +281,9 @@
 					</div>
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="booklist_item wow fadeInUp" data-wow-delay="0.9s">
-							<img src="assets/img/home-three/history.png" alt="">
+							<img th:src="@{/assets/img/home-three/history.png}" alt="">
 							<div class="text">
-								<a href="shop-sidebar.html">
+								<a th:href="@{/shop-sidebar}">
 									<h5>Lịch sử</h5>
 								</a>
 								<p>512 sách</p>
@@ -274,15 +293,14 @@
 				</div>
 			</div>
 		</section>
-		<!-- book list area area  -->
-		<!-- best selling product area  -->
 		<section class="best_selling_pr_area sec_padding" data-bg-color="#fff">
 			<div class="container">
 				<div class="row align-items-center">
 					<div class="col-lg-7">
 						<div class="section_title wow fadeInLeft">
 							<h2 class="title">Lựa chọn của bạn đọc</h2>
-							<p>Những cuốn sách mới nhất vừa có tại thư viện của chúng tôi.</p>
+							<p>Những cuốn sách mới nhất vừa có tại thư viện của chúng
+								tôi.</p>
 						</div>
 					</div>
 					<div class="col-lg-5">
@@ -292,18 +310,17 @@
 							<li role="presentation" class="nav-item"><a
 								class="nav-link active" id="pills-best-tab"
 								data-bs-toggle="pill" data-bs-target="#pills-best" role="tab"
-								aria-controls="pills-best" aria-selected="true">Bán chạy</a>
-							</li>
+								aria-controls="pills-best" aria-selected="true">Bán chạy</a></li>
 							<li role="presentation" class="nav-item"><a class="nav-link"
 								id="pills-offer-tab" data-bs-toggle="pill"
 								data-bs-target="#pills-offer" role="tab"
-								aria-controls="pills-offer" aria-selected="false">Đánh giá cao</a>
-							</li>
+								aria-controls="pills-offer" aria-selected="false">Đánh giá
+									cao</a></li>
 							<li role="presentation" class="nav-item"><a class="nav-link"
 								id="pills-featured-tab" data-bs-toggle="pill"
 								data-bs-target="#pills-featured" role="tab"
-								aria-controls="pills-featured" aria-selected="false">Mới nhất</a>
-							</li>
+								aria-controls="pills-featured" aria-selected="false">Mới
+									nhất</a></li>
 						</ul>
 					</div>
 				</div>
@@ -314,10 +331,10 @@
 							<div class="col-lg-3 col-md-4 col-sm-6">
 								<div class="best_product_item best_product_item_two box-shadow">
 									<div class="img">
-										<a href="#"><img src="assets/img/home-two/choice1.png"
-											alt="book"></a>
+										<a th:href="@{/product-single}"><img
+											th:src="@{/assets/img/home-two/choice1.png}" alt="book"></a>
 										<div class="hover_item">
-											<a class="quick_button" href="my-wishlist.html"
+											<a class="quick_button" th:href="@{/my-wishlist}"
 												data-bs-toggle="tooltip" data-bs-placement="right"
 												title="Wishlist"><i class="icon_heart_alt"></i></a> <span
 												data-bs-toggle="tooltip" data-bs-placement="right"
@@ -332,20 +349,21 @@
 											class="bj_theme_btn add-to-cart-automated"
 											data-name="Enemy – Jake Gyllenhaal"
 											data-img="assets/img/home-two/choice1.png" data-price="25">
-											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn 
+											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn
 										</button>
 									</div>
 									<div class="bj_new_pr_content">
-										<a href="product-single.html">
+										<a th:href="@{/product-single}">
 											<h4 class="bj_new_pr_title">Enemy – Jake Gyllenhaal</h4>
 										</a>
 										<div class="writer_name">
-											By -<a href="author-single.html"> Muaz Bk </a>
+											By -<a th:href="@{/author-single}"> Muaz Bk </a>
 										</div>
 										<div class="bj_pr_meta d-flex">
 											<div class="book_price">$25</div>
 											<div class="ratting">
-												<img src="assets/img/home/raiting.png" alt=""> 1221
+												<img th:src="@{/assets/img/home/raiting.png}" alt="">
+												1221
 											</div>
 										</div>
 									</div>
@@ -355,10 +373,10 @@
 							<div class="col-lg-3 col-md-4 col-sm-6">
 								<div class="best_product_item best_product_item_two box-shadow">
 									<div class="img">
-										<a href="#"><img src="assets/img/home-two/choice2.png"
-											alt="book"></a>
+										<a th:href="@{/product-single}"><img
+											th:src="@{/assets/img/home-two/choice2.png}" alt="book"></a>
 										<div class="hover_item">
-											<a class="quick_button" href="my-wishlist.html"
+											<a class="quick_button" th:href="@{/my-wishlist}"
 												data-bs-toggle="tooltip" data-bs-placement="right"
 												title="Wishlist"><i class="icon_heart_alt"></i></a> <span
 												data-bs-toggle="tooltip" data-bs-placement="right"
@@ -373,20 +391,21 @@
 											class="bj_theme_btn add-to-cart-automated"
 											data-name="Knowledge of eart"
 											data-img="assets/img/home-two/choice2.png" data-price="25">
-											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn 
+											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn
 										</button>
 									</div>
 									<div class="bj_new_pr_content">
-										<a href="product-single.html">
+										<a th:href="@{/product-single}">
 											<h4 class="bj_new_pr_title">Knowledge of eart</h4>
 										</a>
 										<div class="writer_name">
-											By -<a href="author-single.html"> Muaz Bk </a>
+											By -<a th:href="@{/author-single}"> Muaz Bk </a>
 										</div>
 										<div class="bj_pr_meta d-flex">
 											<div class="book_price">$25</div>
 											<div class="ratting">
-												<img src="assets/img/home/raiting.png" alt=""> 1221
+												<img th:src="@{/assets/img/home/raiting.png}" alt="">
+												1221
 											</div>
 										</div>
 									</div>
@@ -396,10 +415,10 @@
 							<div class="col-lg-3 col-md-4 col-sm-6">
 								<div class="best_product_item best_product_item_two box-shadow">
 									<div class="img">
-										<a href="#"><img src="assets/img/home-two/choice3.jpg"
-											alt="book"></a>
+										<a th:href="@{/product-single}"><img
+											th:src="@{/assets/img/home-two/choice3.jpg}" alt="book"></a>
 										<div class="hover_item">
-											<a class="quick_button" href="my-wishlist.html"
+											<a class="quick_button" th:href="@{/my-wishlist}"
 												data-bs-toggle="tooltip" data-bs-placement="right"
 												title="Wishlist"><i class="icon_heart_alt"></i></a> <span
 												data-bs-toggle="tooltip" data-bs-placement="right"
@@ -414,20 +433,21 @@
 											class="bj_theme_btn add-to-cart-automated"
 											data-name="Book Cover Mockup"
 											data-img="assets/img/home-two/choice3.jpg" data-price="35">
-											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn 
+											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn
 										</button>
 									</div>
 									<div class="bj_new_pr_content">
-										<a href="product-single.html">
+										<a th:href="@{/product-single}">
 											<h4 class="bj_new_pr_title">Book Cover Mockup</h4>
 										</a>
 										<div class="writer_name">
-											By -<a href="author-single.html"> Muaz Bk </a>
+											By -<a th:href="@{/author-single}"> Muaz Bk </a>
 										</div>
 										<div class="bj_pr_meta d-flex">
 											<div class="book_price">$35</div>
 											<div class="ratting">
-												<img src="assets/img/home/raiting.png" alt=""> 1220
+												<img th:src="@{/assets/img/home/raiting.png}" alt="">
+												1220
 											</div>
 										</div>
 									</div>
@@ -437,10 +457,10 @@
 							<div class="col-lg-3 col-md-4 col-sm-6">
 								<div class="best_product_item best_product_item_two box-shadow">
 									<div class="img">
-										<a href="#"><img src="assets/img/home-two/choice4.jpg"
-											alt="book"></a>
+										<a th:href="@{/product-single}"><img
+											th:src="@{/assets/img/home-two/choice4.jpg}" alt="book"></a>
 										<div class="hover_item">
-											<a class="quick_button" href="my-wishlist.html"
+											<a class="quick_button" th:href="@{/my-wishlist}"
 												data-bs-toggle="tooltip" data-bs-placement="right"
 												title="Wishlist"><i class="icon_heart_alt"></i></a> <span
 												data-bs-toggle="tooltip" data-bs-placement="right"
@@ -455,20 +475,21 @@
 											class="bj_theme_btn add-to-cart-automated"
 											data-name="Create Your Own Bustiness"
 											data-img="assets/img/home-two/choice4.jpg" data-price="25">
-											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn 
+											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn
 										</button>
 									</div>
 									<div class="bj_new_pr_content">
-										<a href="product-single.html">
+										<a th:href="@{/product-single}">
 											<h4 class="bj_new_pr_title">Create Your Own Bustiness</h4>
 										</a>
 										<div class="writer_name">
-											By -<a href="author-single.html"> Muaz Bk </a>
+											By -<a th:href="@{/author-single}"> Muaz Bk </a>
 										</div>
 										<div class="bj_pr_meta d-flex">
 											<div class="book_price">$25</div>
 											<div class="ratting">
-												<img src="assets/img/home/raiting.png" alt=""> 1221
+												<img th:src="@{/assets/img/home/raiting.png}" alt="">
+												1221
 											</div>
 										</div>
 									</div>
@@ -483,10 +504,10 @@
 							<div class="col-lg-3 col-md-4 col-sm-6">
 								<div class="best_product_item best_product_item_two box-shadow">
 									<div class="img">
-										<a href="#"><img src="assets/img/home-two/choice4.jpg"
-											alt="book"></a>
+										<a th:href="@{/product-single}"><img
+											th:src="@{/assets/img/home-two/choice4.jpg}" alt="book"></a>
 										<div class="hover_item">
-											<a class="quick_button" href="my-wishlist.html"
+											<a class="quick_button" th:href="@{/my-wishlist}"
 												data-bs-toggle="tooltip" data-bs-placement="right"
 												title="Wishlist"><i class="icon_heart_alt"></i></a> <span
 												data-bs-toggle="tooltip" data-bs-placement="right"
@@ -501,20 +522,21 @@
 											class="bj_theme_btn add-to-cart-automated"
 											data-name="Create Your Own Bustiness"
 											data-img="assets/img/home-two/choice4.jpg" data-price="25">
-											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn 
+											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn
 										</button>
 									</div>
 									<div class="bj_new_pr_content">
-										<a href="product-single.html">
+										<a th:href="@{/product-single}">
 											<h4 class="bj_new_pr_title">Create Your Own Bustiness</h4>
 										</a>
 										<div class="writer_name">
-											By -<a href="author-single.html"> Muaz Bk </a>
+											By -<a th:href="@{/author-single}"> Muaz Bk </a>
 										</div>
 										<div class="bj_pr_meta d-flex">
 											<div class="book_price">$25</div>
 											<div class="ratting">
-												<img src="assets/img/home/raiting.png" alt=""> 1221
+												<img th:src="@{/assets/img/home/raiting.png}" alt="">
+												1221
 											</div>
 										</div>
 									</div>
@@ -523,10 +545,10 @@
 							<div class="col-lg-3 col-md-4 col-sm-6">
 								<div class="best_product_item best_product_item_two box-shadow">
 									<div class="img">
-										<a href="#"><img src="assets/img/home-two/choice1.png"
-											alt="book"></a>
+										<a th:href="@{/product-single}"><img
+											th:src="@{/assets/img/home-two/choice1.png}" alt="book"></a>
 										<div class="hover_item">
-											<a class="quick_button" href="my-wishlist.html"
+											<a class="quick_button" th:href="@{/my-wishlist}"
 												data-bs-toggle="tooltip" data-bs-placement="right"
 												title="Wishlist"><i class="icon_heart_alt"></i></a> <span
 												data-bs-toggle="tooltip" data-bs-placement="right"
@@ -541,20 +563,21 @@
 											class="bj_theme_btn add-to-cart-automated"
 											data-name="Enemy – Jake Gyllenhaal"
 											data-img="assets/img/home-two/choice1.png" data-price="25">
-											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn 
+											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn
 										</button>
 									</div>
 									<div class="bj_new_pr_content">
-										<a href="product-single.html">
+										<a th:href="@{/product-single}">
 											<h4 class="bj_new_pr_title">Enemy – Jake Gyllenhaal</h4>
 										</a>
 										<div class="writer_name">
-											By -<a href="author-single.html"> Muaz Bk </a>
+											By -<a th:href="@{/author-single}"> Muaz Bk </a>
 										</div>
 										<div class="bj_pr_meta d-flex">
 											<div class="book_price">$25</div>
 											<div class="ratting">
-												<img src="assets/img/home/raiting.png" alt=""> 1221
+												<img th:src="@{/assets/img/home/raiting.png}" alt="">
+												1221
 											</div>
 										</div>
 									</div>
@@ -564,10 +587,10 @@
 							<div class="col-lg-3 col-md-4 col-sm-6">
 								<div class="best_product_item best_product_item_two box-shadow">
 									<div class="img">
-										<a href="#"><img src="assets/img/home-two/choice2.png"
-											alt="book"></a>
+										<a th:href="@{/product-single}"><img
+											th:src="@{/assets/img/home-two/choice2.png}" alt="book"></a>
 										<div class="hover_item">
-											<a class="quick_button" href="my-wishlist.html"
+											<a class="quick_button" th:href="@{/my-wishlist}"
 												data-bs-toggle="tooltip" data-bs-placement="right"
 												title="Wishlist"><i class="icon_heart_alt"></i></a> <span
 												data-bs-toggle="tooltip" data-bs-placement="right"
@@ -582,20 +605,21 @@
 											class="bj_theme_btn add-to-cart-automated"
 											data-name="Knowledge of eart"
 											data-img="assets/img/home-two/choice2.png" data-price="25">
-											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn 
+											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn
 										</button>
 									</div>
 									<div class="bj_new_pr_content">
-										<a href="product-single.html">
+										<a th:href="@{/product-single}">
 											<h4 class="bj_new_pr_title">Knowledge of eart</h4>
 										</a>
 										<div class="writer_name">
-											By -<a href="author-single.html"> Muaz Bk </a>
+											By -<a th:href="@{/author-single}"> Muaz Bk </a>
 										</div>
 										<div class="bj_pr_meta d-flex">
 											<div class="book_price">$25</div>
 											<div class="ratting">
-												<img src="assets/img/home/raiting.png" alt=""> 1221
+												<img th:src="@{/assets/img/home/raiting.png}" alt="">
+												1221
 											</div>
 										</div>
 									</div>
@@ -605,10 +629,10 @@
 							<div class="col-lg-3 col-md-4 col-sm-6">
 								<div class="best_product_item best_product_item_two box-shadow">
 									<div class="img">
-										<a href="#"><img src="assets/img/home-two/choice3.jpg"
-											alt="book"></a>
+										<a th:href="@{/product-single}"><img
+											th:src="@{/assets/img/home-two/choice3.jpg}" alt="book"></a>
 										<div class="hover_item">
-											<a class="quick_button" href="my-wishlist.html"
+											<a class="quick_button" th:href="@{/my-wishlist}"
 												data-bs-toggle="tooltip" data-bs-placement="right"
 												title="Wishlist"><i class="icon_heart_alt"></i></a> <span
 												data-bs-toggle="tooltip" data-bs-placement="right"
@@ -623,20 +647,21 @@
 											class="bj_theme_btn add-to-cart-automated"
 											data-name="Book Cover Mockup"
 											data-img="assets/img/home-two/choice3.jpg" data-price="35">
-											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn 
+											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn
 										</button>
 									</div>
 									<div class="bj_new_pr_content">
-										<a href="product-single.html">
+										<a th:href="@{/product-single}">
 											<h4 class="bj_new_pr_title">Book Cover Mockup</h4>
 										</a>
 										<div class="writer_name">
-											By -<a href="author-single.html"> Muaz Bk </a>
+											By -<a th:href="@{/author-single}"> Muaz Bk </a>
 										</div>
 										<div class="bj_pr_meta d-flex">
 											<div class="book_price">$35</div>
 											<div class="ratting">
-												<img src="assets/img/home/raiting.png" alt=""> 1220
+												<img th:src="@{/assets/img/home/raiting.png}" alt="">
+												1220
 											</div>
 										</div>
 									</div>
@@ -646,10 +671,10 @@
 							<div class="col-lg-3 col-md-4 col-sm-6">
 								<div class="best_product_item best_product_item_two box-shadow">
 									<div class="img">
-										<a href="#"><img src="assets/img/home-two/choice4.jpg"
-											alt="book"></a>
+										<a th:href="@{/product-single}"><img
+											th:src="@{/assets/img/home-two/choice4.jpg}" alt="book"></a>
 										<div class="hover_item">
-											<a class="quick_button" href="my-wishlist.html"
+											<a class="quick_button" th:href="@{/my-wishlist}"
 												data-bs-toggle="tooltip" data-bs-placement="right"
 												title="Wishlist"><i class="icon_heart_alt"></i></a> <span
 												data-bs-toggle="tooltip" data-bs-placement="right"
@@ -664,20 +689,21 @@
 											class="bj_theme_btn add-to-cart-automated"
 											data-name="Create Your Own Bustiness"
 											data-img="assets/img/home-two/choice4.jpg" data-price="25">
-											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn 
+											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn
 										</button>
 									</div>
 									<div class="bj_new_pr_content">
-										<a href="product-single.html">
+										<a th:href="@{/product-single}">
 											<h4 class="bj_new_pr_title">Create Your Own Bustiness</h4>
 										</a>
 										<div class="writer_name">
-											By -<a href="author-single.html"> Muaz Bk </a>
+											By -<a th:href="@{/author-single}"> Muaz Bk </a>
 										</div>
 										<div class="bj_pr_meta d-flex">
 											<div class="book_price">$25</div>
 											<div class="ratting">
-												<img src="assets/img/home/raiting.png" alt=""> 1221
+												<img th:src="@{/assets/img/home/raiting.png}" alt="">
+												1221
 											</div>
 										</div>
 									</div>
@@ -693,10 +719,10 @@
 							<div class="col-lg-3 col-md-4 col-sm-6">
 								<div class="best_product_item best_product_item_two box-shadow">
 									<div class="img">
-										<a href="#"><img src="assets/img/home-two/choice3.jpg"
-											alt="book"></a>
+										<a th:href="@{/product-single}"><img
+											th:src="@{/assets/img/home-two/choice3.jpg}" alt="book"></a>
 										<div class="hover_item">
-											<a class="quick_button" href="my-wishlist.html"
+											<a class="quick_button" th:href="@{/my-wishlist}"
 												data-bs-toggle="tooltip" data-bs-placement="right"
 												title="Wishlist"><i class="icon_heart_alt"></i></a> <span
 												data-bs-toggle="tooltip" data-bs-placement="right"
@@ -711,20 +737,21 @@
 											class="bj_theme_btn add-to-cart-automated"
 											data-name="Book Cover Mockup"
 											data-img="assets/img/home-two/choice3.jpg" data-price="35">
-											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn 
+											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn
 										</button>
 									</div>
 									<div class="bj_new_pr_content">
-										<a href="product-single.html">
+										<a th:href="@{/product-single}">
 											<h4 class="bj_new_pr_title">Book Cover Mockup</h4>
 										</a>
 										<div class="writer_name">
-											By -<a href="author-single.html"> Muaz Bk </a>
+											By -<a th:href="@{/author-single}"> Muaz Bk </a>
 										</div>
 										<div class="bj_pr_meta d-flex">
 											<div class="book_price">$35</div>
 											<div class="ratting">
-												<img src="assets/img/home/raiting.png" alt=""> 1220
+												<img th:src="@{/assets/img/home/raiting.png}" alt="">
+												1220
 											</div>
 										</div>
 									</div>
@@ -733,10 +760,10 @@
 							<div class="col-lg-3 col-md-4 col-sm-6">
 								<div class="best_product_item best_product_item_two box-shadow">
 									<div class="img">
-										<a href="#"><img src="assets/img/home-two/choice1.png"
-											alt="book"></a>
+										<a th:href="@{/product-single}"><img
+											th:src="@{/assets/img/home-two/choice1.png}" alt="book"></a>
 										<div class="hover_item">
-											<a class="quick_button" href="my-wishlist.html"
+											<a class="quick_button" th:href="@{/my-wishlist}"
 												data-bs-toggle="tooltip" data-bs-placement="right"
 												title="Wishlist"><i class="icon_heart_alt"></i></a> <span
 												data-bs-toggle="tooltip" data-bs-placement="right"
@@ -751,20 +778,21 @@
 											class="bj_theme_btn add-to-cart-automated"
 											data-name="Enemy – Jake Gyllenhaal"
 											data-img="assets/img/home-two/choice1.png" data-price="25">
-											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn 
+											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn
 										</button>
 									</div>
 									<div class="bj_new_pr_content">
-										<a href="product-single.html">
+										<a th:href="@{/product-single}">
 											<h4 class="bj_new_pr_title">Enemy – Jake Gyllenhaal</h4>
 										</a>
 										<div class="writer_name">
-											By -<a href="author-single.html"> Muaz Bk </a>
+											By -<a th:href="@{/author-single}"> Muaz Bk </a>
 										</div>
 										<div class="bj_pr_meta d-flex">
 											<div class="book_price">$25</div>
 											<div class="ratting">
-												<img src="assets/img/home/raiting.png" alt=""> 1221
+												<img th:src="@{/assets/img/home/raiting.png}" alt="">
+												1221
 											</div>
 										</div>
 									</div>
@@ -774,10 +802,10 @@
 							<div class="col-lg-3 col-md-4 col-sm-6">
 								<div class="best_product_item best_product_item_two box-shadow">
 									<div class="img">
-										<a href="#"><img src="assets/img/home-two/choice4.jpg"
-											alt="book"></a>
+										<a th:href="@{/product-single}"><img
+											th:src="@{/assets/img/home-two/choice4.jpg}" alt="book"></a>
 										<div class="hover_item">
-											<a class="quick_button" href="my-wishlist.html"
+											<a class="quick_button" th:href="@{/my-wishlist}"
 												data-bs-toggle="tooltip" data-bs-placement="right"
 												title="Wishlist"><i class="icon_heart_alt"></i></a> <span
 												data-bs-toggle="tooltip" data-bs-placement="right"
@@ -792,20 +820,21 @@
 											class="bj_theme_btn add-to-cart-automated"
 											data-name="Create Your Own Bustiness"
 											data-img="assets/img/home-two/choice4.jpg" data-price="25">
-											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn 
+											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn
 										</button>
 									</div>
 									<div class="bj_new_pr_content">
-										<a href="product-single.html">
+										<a th:href="@{/product-single}">
 											<h4 class="bj_new_pr_title">Create Your Own Bustiness</h4>
 										</a>
 										<div class="writer_name">
-											By -<a href="author-single.html"> Muaz Bk </a>
+											By -<a th:href="@{/author-single}"> Muaz Bk </a>
 										</div>
 										<div class="bj_pr_meta d-flex">
 											<div class="book_price">$25</div>
 											<div class="ratting">
-												<img src="assets/img/home/raiting.png" alt=""> 1221
+												<img th:src="@{/assets/img/home/raiting.png}" alt="">
+												1221
 											</div>
 										</div>
 									</div>
@@ -815,10 +844,10 @@
 							<div class="col-lg-3 col-md-4 col-sm-6">
 								<div class="best_product_item best_product_item_two box-shadow">
 									<div class="img">
-										<a href="#"><img src="assets/img/home-two/choice2.png"
-											alt="book"></a>
+										<a th:href="@{/product-single}"><img
+											th:src="@{/assets/img/home-two/choice2.png}" alt="book"></a>
 										<div class="hover_item">
-											<a class="quick_button" href="my-wishlist.html"
+											<a class="quick_button" th:href="@{/my-wishlist}"
 												data-bs-toggle="tooltip" data-bs-placement="right"
 												title="Wishlist"><i class="icon_heart_alt"></i></a> <span
 												data-bs-toggle="tooltip" data-bs-placement="right"
@@ -833,20 +862,21 @@
 											class="bj_theme_btn add-to-cart-automated"
 											data-name="Knowledge of eart"
 											data-img="assets/img/home-two/choice2.png" data-price="25">
-											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn 
+											<i class="icon_cart_alt"></i>Thêm vào danh sách mượn
 										</button>
 									</div>
 									<div class="bj_new_pr_content">
-										<a href="product-single.html">
+										<a th:href="@{/product-single}">
 											<h4 class="bj_new_pr_title">Knowledge of eart</h4>
 										</a>
 										<div class="writer_name">
-											By -<a href="author-single.html"> Muaz Bk </a>
+											By -<a th:href="@{/author-single}"> Muaz Bk </a>
 										</div>
 										<div class="bj_pr_meta d-flex">
 											<div class="book_price">$25</div>
 											<div class="ratting">
-												<img src="assets/img/home/raiting.png" alt=""> 1221
+												<img th:src="@{/assets/img/home/raiting.png}" alt="">
+												1221
 											</div>
 										</div>
 									</div>
@@ -856,7 +886,7 @@
 					</div>
 				</div>
 				<div class="text-center mt-5">
-					<a href="shop.html" class="bj_theme_btn strock_btn wow fadeInUp"
+					<a th:href="@{/shop}" class="bj_theme_btn strock_btn wow fadeInUp"
 						data-wow-delay="0.4s">Xem thêm <i class="arrow_right"></i></a>
 				</div>
 			</div>
@@ -865,17 +895,18 @@
 		<section class="shortlist_product_promo_area"
 			data-bg-color="#cdf0f080">
 			<img class="bg_top wow fadeInDown" data-wow-delay="0.4s"
-				src="assets/img/home-three/short-list-bg-shap.png" alt="">
+				th:src="@{/assets/img/home-three/short-list-bg-shap.png}" alt="">
 			<div class="container">
 				<div class="row align-items-center">
 					<div class="col-lg-6 col-md-6">
-						<h2 class="title wow fadeInLeft" data-wow-delay="0.2s">Các loại sách nước ngoài.</h2>
+						<h2 class="title wow fadeInLeft" data-wow-delay="0.2s">Các
+							loại sách nước ngoài.</h2>
 					</div>
 					<div class="col-lg-6 col-md-6">
 						<div class="shortlist_book">
 							<div class="round wow zoomIn" data-wow-delay="0.2s"></div>
 							<img class="wow fadeInRight" data-wow-delay="0.4s"
-								src="assets/img/home-three/short-list-book.png" alt="">
+								th:src="@{/assets/img/home-three/short-list-book.png}" alt="">
 						</div>
 					</div>
 				</div>
@@ -883,8 +914,6 @@
 		</section>
 
 
-		<!-- price area  -->
-		<!-- bj blog area -->
 		<section class="bj_home_blog_area sec_padding pt-0"
 			data-bg-color="#f5f5f5">
 			<div class="container">
@@ -898,17 +927,17 @@
 						<div class="bj_blog_grid_item wow fadeInUp" data-wow-delay="0.3s">
 							<div class="bj_blog_img">
 								<a href="#"><img class="img-fluid"
-									src="assets/img/home-two/blog_img1.jpg" alt=""></a> <a
+									th:src="@{/assets/img/home-two/blog_img1.jpg}" alt=""></a> <a
 									href="#" class="blog_category">Book Journeys</a>
 							</div>
-							<a href="blog-details.html">
+							<a th:href="@{/blog-details}">
 								<h3 class="blog_title">Uncover Your Next Great Read: A
 									Journey Through BookJar</h3>
 							</a>
 							<div class="blog_meta">
 								<div class="post_author">
-									<img src="assets/img/home-two/author1.jpg" alt=""> <a
-										href="author-single.html">Talan Torff</a>
+									<img th:src="@{/assets/img/home-two/author1.jpg}" alt="">
+									<a th:href="@{/author-single}">Talan Torff</a>
 								</div>
 								<div class="post_date">
 									<i class="icon_calendar"></i>Nov 08, 2024
@@ -920,17 +949,17 @@
 						<div class="bj_blog_grid_item wow fadeInUp" data-wow-delay="0.4s">
 							<div class="bj_blog_img">
 								<a href="#"><img class="img-fluid"
-									src="assets/img/home-two/blog_img2.jpg" alt=""></a> <a
+									th:src="@{/assets/img/home-two/blog_img2.jpg}" alt=""></a> <a
 									href="#" class="blog_category">Stories Uncovered</a>
 							</div>
-							<a href="blog-details.html">
+							<a th:href="@{/blog-details}">
 								<h3 class="blog_title">Beyond the Pages: Discover the Magic
 									Inside BookJar</h3>
 							</a>
 							<div class="blog_meta">
 								<div class="post_author">
-									<img src="assets/img/home-two/author1.jpg" alt=""> <a
-										href="author-single.html">Muaz Bk</a>
+									<img th:src="@{/assets/img/home-two/author1.jpg}" alt="">
+									<a th:href="@{/author-single}">Muaz Bk</a>
 								</div>
 								<div class="post_date">
 									<i class="icon_calendar"></i>Nov 08, 2024
@@ -942,17 +971,17 @@
 						<div class="bj_blog_grid_item wow fadeInUp" data-wow-delay="0.5s">
 							<div class="bj_blog_img">
 								<a href="#"><img class="img-fluid"
-									src="assets/img/home-two/blog_img3.jpg" alt=""></a> <a
+									th:src="@{/assets/img/home-two/blog_img3.jpg}" alt=""></a> <a
 									href="#" class="blog_category">Reader's Haven</a>
 							</div>
-							<a href="blog-details.html">
+							<a th:href="@{/blog-details}">
 								<h3 class="blog_title">Stories Await: Dive into a World of
 									Books at BookJar</h3>
 							</a>
 							<div class="blog_meta">
 								<div class="post_author">
-									<img src="assets/img/home-two/author1.jpg" alt=""> <a
-										href="author-single.html">Jason Moe</a>
+									<img th:src="@{/assets/img/home-two/author1.jpg}" alt="">
+									<a th:href="@{/author-single}">Jason Moe</a>
 								</div>
 								<div class="post_date">
 									<i class="icon_calendar"></i>Nov 08, 2024
@@ -963,28 +992,46 @@
 				</div>
 			</div>
 		</section>
-		<!-- bj blog area -->
-		<!-- thêm script đơn giản xử lý form mượn/trả -->
 		<script>
-		// Khi form mượn/trả được submit, hiển thị xác nhận tạm thời trong giao diện
-		document.addEventListener('DOMContentLoaded', function(){
-			var form = document.querySelector('.borrow_return_panel form');
-			if(form){
-				form.addEventListener('submit', function(e){
-					e.preventDefault();
-					var code = form.querySelector('input[placeholder="Mã sách hoặc tiêu đề"]').value.trim();
-					var action = form.querySelector('select').value;
-					var user = form.querySelector('input[placeholder^="Mã người"]').value.trim();
-					var card = form.closest('.card');
-					if(!code){
-						alert('Vui lòng nhập mã sách hoặc tiêu đề.');
-						return;
-					}
-					// Hiển thị thông báo xác nhận (thay bằng gọi API ở backend)
-					card.innerHTML = '<div class="p-3"><h5>Yêu cầu đã được gửi</h5><p>Hành động: ' + (action=='borrow'? 'Mượn' : 'Trả') + '<br>Sách: ' + code + '<br>Người mượn: ' + (user || 'Không cung cấp') + '</p><p class="text-muted">Hệ thống sẽ xử lý và thông báo trạng thái.</p><a href="javascript:location.reload()" class="bj_theme_btn strock_btn">Quay lại</a></div>';
-				});
-			}
-		});
+			// Khi form mượn/trả được submit, hiển thị xác nhận tạm thời trong giao diện
+			document
+					.addEventListener(
+							'DOMContentLoaded',
+							function() {
+								var form = document
+										.querySelector('.borrow_return_panel form');
+								if (form) {
+									form
+											.addEventListener(
+													'submit',
+													function(e) {
+														e.preventDefault();
+														var code = form
+																.querySelector('input[placeholder="Mã sách hoặc tiêu đề"]').value
+																.trim();
+														var action = form
+																.querySelector('select').value;
+														var user = form
+																.querySelector('input[placeholder^="Mã người"]').value
+																.trim();
+														var card = form
+																.closest('.card');
+														if (!code) {
+															alert('Vui lòng nhập mã sách hoặc tiêu đề.');
+															return;
+														}
+														// Hiển thị thông báo xác nhận (thay bằng gọi API ở backend)
+														card.innerHTML = '<div class="p-3"><h5>Yêu cầu đã được gửi</h5><p>Hành động: '
+																+ (action == 'borrow' ? 'Mượn'
+																		: 'Trả')
+																+ '<br>Sách: '
+																+ code
+																+ '<br>Người mượn: '
+																+ (user || 'Không cung cấp')
+																+ '</p><p class="text-muted">Hệ thống sẽ xử lý và thông báo trạng thái.</p><a href="javascript:location.reload()" class="bj_theme_btn strock_btn">Quay lại</a></div>';
+													});
+								}
+							});
 		</script>
 	</div>
 </body>

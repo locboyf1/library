@@ -21,4 +21,12 @@ public class NhaXuatBanService {
 		return nhaXuatBanRepository.findAll();
 	}
 
+	public void create(NhaXuatBan nhaXuatBan) {
+		nhaXuatBanRepository.save(nhaXuatBan);
+	}
+
+	public void update(NhaXuatBan nhaXuatBan) {
+		nhaXuatBanRepository.save(nhaXuatBan);
+	}
+
 }

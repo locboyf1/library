@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.library.project.vinhuni.repository.DocGiaRepository;
 import com.library.project.vinhuni.repository.TaiKhoanRepository;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/register")
@@ -37,7 +39,12 @@ public class RegisterController {
 
 	@PostMapping
 	@Transactional
-	public String register(@ModelAttribute DocGiaDto user) {
+	public String register(@Valid @ModelAttribute DocGiaDto user, BindingResult result) {
+
+		if (result.hasErrors()) {
+			return "content/register";
+		}
+
 		DocGia docGia = new DocGia();
 		docGia.setTenDocGia(user.getTenDocGia());
 		docGia.setDiaChi(user.getDiaChi());

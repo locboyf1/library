@@ -5,8 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "tblTacGia")
@@ -17,6 +18,8 @@ public class TacGia {
 	@Column(name = "MaTacGia")
 	private Integer maTacGia;
 
+	@NotBlank(message = "Tên tác giả không được để trống")
+	@Size(max = 200, message = "Tên tác giả không được quá dài")
 	@Column(name = "TenTacGia")
 	private String tenTacGia;
 
@@ -26,15 +29,16 @@ public class TacGia {
 	@Column(name = "anh", nullable = false, columnDefinition = "LONGTEXT")
 	private String anh;
 
+	@Size(max = 200, message = "Mô tả không được quá dài")
 	@Column(name = "MoTa", columnDefinition = "MEDIUMTEXT")
 	private String moTa;
 
-	@Lob
+	@NotBlank(message = "Nội dung không được để trống")
 	@Column(name = "NoiDung", columnDefinition = "LONGTEXT")
 	private String noiDung;
 
 	@Column(name = "NamSinh")
-	private Integer namSinh;
+	private String namSinh;
 
 	@Column(name = "hien")
 	private Boolean hien;
@@ -95,11 +99,11 @@ public class TacGia {
 		return this.moTa;
 	}
 
-	public void setNamSinh(Integer namSinh) {
+	public void setNamSinh(String namSinh) {
 		this.namSinh = namSinh;
 	}
 
-	public Integer getNamSinh() {
+	public String getNamSinh() {
 		return this.namSinh;
 	}
 }

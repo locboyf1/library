@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "tblTheLoai")
@@ -16,9 +18,12 @@ public class TheLoai {
 	@Column(name = "MaTheLoai")
 	private Integer maTheLoai;
 
+	@NotBlank(message = "Tên thể loại không được để trống")
+	@Size(max = 100, message = "Tên thể loại không được quá dài")
 	@Column(name = "TenTheLoai", length = 100)
 	private String tenTheLoai;
 
+	@Size(max = 500, message = "Mô tả không được quá dài")
 	@Column(name = "MoTa", length = 500)
 	private String moTa;
 

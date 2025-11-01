@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,8 @@ import com.library.project.vinhuni.repository.DocGiaRepository;
 import com.library.project.vinhuni.repository.NhanVienRepository;
 import com.library.project.vinhuni.repository.TaiKhoanRepository;
 import com.library.project.vinhuni.service.TaiKhoanService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/admin/nguoidung")
@@ -49,15 +52,30 @@ public class UsersController {
 		return "admin/users/index";
 	}
 
-	@GetMapping("/create")
-	public String create(Model model) {
-		model.addAttribute("userNhanVien", new NhanVienDto());
+	@GetMapping("/create/docgia")
+	public String createDocGia(Model model) {
 		model.addAttribute("userDocGia", new DocGiaDto());
-		return "admin/users/create";
+		return "admin/users/createDocGia";
+	}
+
+	@GetMapping("/create/nhanvien")
+	public String createNhanVien(Model model) {
+		model.addAttribute("userNhanVien", new NhanVienDto());
+		return "admin/users/createNhanVien";
 	}
 
 	@PostMapping("/create/nhanvien")
-	public String createNhanVien(@ModelAttribute NhanVienDto userNhanVien) {
+	public String createNhanVien(@Valid @ModelAttribute("userNhanVien") NhanVienDto userNhanVien, BindingResult result, Model model) {
+
+		TaiKhoan kiemtra = taiKhoanService.findByTenDangNhap(userNhanVien.getTenDangNhap());
+		if (kiemtra != null) {
+			result.rejectValue("tenDangNhap", "null", "Tên đăng nhập đã tồn tại");
+		}
+
+		if (result.hasErrors()) {
+			return "admin/users/createNhanVien";
+		}
+
 		NhanVien nhanVien = new NhanVien();
 		nhanVien.setNhanVien(userNhanVien);
 
@@ -75,7 +93,17 @@ public class UsersController {
 	}
 
 	@PostMapping("/create/docgia")
-	public String createDocGia(@ModelAttribute DocGiaDto userDocGia) {
+	public String createDocGia(@Valid @ModelAttribute("userDocGia") DocGiaDto userDocGia, BindingResult result, Model model) {
+
+		TaiKhoan kiemtra = taiKhoanService.findByTenDangNhap(userDocGia.getTenDangNhap());
+		if (kiemtra != null) {
+			result.rejectValue("tenDangNhap", "null", "Tên đăng nhập đã tồn tại");
+		}
+
+		if (result.hasErrors()) {
+			return "admin/users/createDocGia";
+		}
+
 		DocGia docGia = new DocGia();
 		docGia.setDocGia(userDocGia);
 		docGia.setNgayDangKy(LocalDate.now());
@@ -113,8 +141,12 @@ public class UsersController {
 	}
 
 	@PostMapping("/update/nhanvien")
-	public String updateNhanVien(@ModelAttribute("user") NhanVienDto user,
-			@RequestParam("maNhanVien") String maNhanVien) {
+	public String updateNhanVien(@Valid @ModelAttribute("user") NhanVienDto user, BindingResult result, @RequestParam("maNhanVien") String maNhanVien) {
+
+		if (result.hasErrors()) {
+			return "admin/users/updateNhanVien";
+		}
+
 		NhanVien nhanVien = nhanVienRepository.findByMaNhanVien(maNhanVien).orElse(null);
 		nhanVien.setNhanVien(user);
 
@@ -129,7 +161,12 @@ public class UsersController {
 	}
 
 	@PostMapping("/update/docgia")
-	public String updateNhanVien(@ModelAttribute("user") DocGiaDto user, @RequestParam("maDocGia") String maDocGia) {
+	public String updateNhanVien(@Valid @ModelAttribute("user") DocGiaDto user, BindingResult result, @RequestParam("maDocGia") String maDocGia) {
+
+		if (result.hasErrors()) {
+			return "admin/users/updateDocGia";
+		}
+
 		DocGia docGia = docGiaRepository.findByMaDocGia(maDocGia).orElse(null);
 		docGia.setDocGia(user);
 
