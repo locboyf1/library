@@ -53,6 +53,7 @@ public class RegisterController {
 		String matKhauMaHoa = passwordEncoder.encode(user.getMatKhau());
 		taiKhoan.setMatKhau(matKhauMaHoa);
 		taiKhoan.setLoaiTaiKhoan("docgia");
+		taiKhoan.setTrangThai(true);
 
 		taiKhoan.setDocGia(savedDocGia);
 

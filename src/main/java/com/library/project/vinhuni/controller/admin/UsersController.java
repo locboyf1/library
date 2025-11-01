@@ -69,7 +69,7 @@ public class UsersController {
 		String matKhauMaHoa = passwordEncoder.encode(userNhanVien.getMatKhau());
 		taiKhoan.setMatKhau(matKhauMaHoa);
 		taiKhoan.setTenDangNhap(userNhanVien.getTenDangNhap());
-
+		taiKhoan.setTrangThai(true);
 		taiKhoanRepository.save(taiKhoan);
 		return "redirect:/admin/nguoidung";
 	}
@@ -88,7 +88,7 @@ public class UsersController {
 		String matKhauMaHoa = passwordEncoder.encode(userDocGia.getMatKhau());
 		taiKhoan.setMatKhau(matKhauMaHoa);
 		taiKhoan.setTenDangNhap(userDocGia.getTenDangNhap());
-
+		taiKhoan.setTrangThai(true);
 		taiKhoanRepository.save(taiKhoan);
 		return "redirect:/admin/nguoidung";
 	}
@@ -123,7 +123,6 @@ public class UsersController {
 		TaiKhoan taiKhoan = taiKhoanService.findByTenDangNhap(user.getTenDangNhap());
 		taiKhoan.setNhanVien(nhanVienUpdated);
 		taiKhoan.setLoaiTaiKhoan("nhanvien");
-
 		taiKhoanRepository.save(taiKhoan);
 
 		return "redirect:/admin/nguoidung";
@@ -139,7 +138,6 @@ public class UsersController {
 		TaiKhoan taiKhoan = taiKhoanService.findByTenDangNhap(user.getTenDangNhap());
 		taiKhoan.setDocGia(docGiaUpdated);
 		taiKhoan.setLoaiTaiKhoan("docgia");
-
 		taiKhoanRepository.save(taiKhoan);
 		return "redirect:/admin/nguoidung";
 	}
