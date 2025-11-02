@@ -37,6 +37,9 @@ public class NhaXuatBan {
 	@Column(name = "DiaChi", length = 500)
 	private String diaChi;
 
+	@Column(name = "Hien", nullable = false)
+	private Boolean hien;
+
 	public Integer getMaNhaXuatBan() {
 		return maNhaXuatBan;
 	}
@@ -77,4 +80,11 @@ public class NhaXuatBan {
 		this.diaChi = diaChi;
 	}
 
+	public void setHien(Boolean hien) {
+		this.hien = hien;
+	}
+
+	public Boolean getHien() {
+		return this.hien;
+	}
 }

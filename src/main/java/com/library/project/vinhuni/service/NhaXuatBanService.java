@@ -22,10 +22,18 @@ public class NhaXuatBanService {
 	}
 
 	public void create(NhaXuatBan nhaXuatBan) {
+		nhaXuatBan.setHien(true);
 		nhaXuatBanRepository.save(nhaXuatBan);
 	}
 
 	public void update(NhaXuatBan nhaXuatBan) {
+		NhaXuatBan nhaXuatBanDB = nhaXuatBanRepository.findByMaNhaXuatBan(nhaXuatBan.getMaNhaXuatBan());
+		nhaXuatBan.setHien(nhaXuatBanDB.getHien());
+		nhaXuatBanRepository.save(nhaXuatBan);
+	}
+
+	public void show(NhaXuatBan nhaXuatBan) {
+		nhaXuatBan.setHien(!nhaXuatBan.getHien());
 		nhaXuatBanRepository.save(nhaXuatBan);
 	}
 
