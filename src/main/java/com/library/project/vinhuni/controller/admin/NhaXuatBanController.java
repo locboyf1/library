@@ -68,4 +68,12 @@ public class NhaXuatBanController {
 		return "redirect:/admin/nhaxuatban";
 	}
 
+	@GetMapping("/show/{id}")
+	public String show(@PathVariable("id") Integer id) {
+		NhaXuatBan nhaXuatBan = nhaXuatBanService.findByMaNXB(id);
+		nhaXuatBanService.show(nhaXuatBan);
+
+		return "redirect:/admin/nhaxuatban";
+	}
+
 }

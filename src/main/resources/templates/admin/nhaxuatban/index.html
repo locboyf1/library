@@ -24,7 +24,7 @@
 										<th class="" scope="col">Email</th>
 										<th scope="col">Số điện thoại</th>
 										<th scope="col">Địa chỉ</th>
-										<th scope="col">Hành động</th>
+										<th class="col-2" scope="col">Hành động</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -38,8 +38,10 @@
 											<a
 											th:href="@{/admin/nhaxuatban/update/{id}(id = ${nhaXB.maNhaXuatBan})}"
 											class="btn btn-outline-info">Sửa</a>
+												<a	th:href="@{/admin/nhaxuatban/show/{id}(id = ${nhaXB.maNhaXuatBan})}"
+											th:class="${nhaXB.hien ? 'btn btn-outline-warning':'btn btn-outline-danger'}" ><i th:class="${ nhaXB.hien ? 'fa fa-eye' : 'fa fa-eye-slash'}" ></i><span th:text="${nhaXB.hien ? 'Đang hiện':'Đã ẩn'}" ></span></a>
 										</td>
-									</tr>
+									</tr>	
 
 								</tbody>
 							</table>
