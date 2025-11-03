@@ -18,18 +18,18 @@ public class NhaXuatBan {
 	private Integer maNhaXuatBan;
 
 	@NotBlank(message = "Tên nhà xuất bản không được để trống")
-	@Size(max = 200, message = "Tên nhà xuất bản không được quá dài")
+	@Size(max = 200, message = "Vui lòng nhập đúng tên nhà xuất bản ")
 	@Column(name = "TenNXB", length = 200)
 	private String tenNhaXuatBan;
 
 	@NotBlank(message = "Email không được để trống")
-	@Size(max = 300, message = "Email không được quá dài")
-	@Column(name = "Email", length = 300)
+	@Size(max = 100, message = "Email không được quá dài")
+	@Column(name = "Email", length = 100)
 	private String email;
 
 	@NotBlank(message = "Số điện thoại không được để trống")
-	@Size(max = 15, message = "Số điện thoại không được quá dài")
-	@Column(name = "SoDienThoai", length = 15)
+	@Size(max = 10, message = "Vui lòng nhập đúng định dạng")
+	@Column(name = "SoDienThoai", length = 10)
 	private String soDienThoai;
 
 	@NotBlank(message = "Địa chỉ không được để trống")
