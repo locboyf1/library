@@ -34,13 +34,17 @@
 										<td th:text="${nhaXB.email}">Mark</td>
 										<td th:text="${nhaXB.soDienThoai}">Mark</td>
 										<td th:text="${nhaXB.diaChi}">Mark</td>
-										<td class="d-flex justify-content-between align-items-center">
-											<a
-											th:href="@{/admin/nhaxuatban/update/{id}(id = ${nhaXB.maNhaXuatBan})}"
-											class="btn btn-outline-info">Sửa</a>
-												<a	th:href="@{/admin/nhaxuatban/show/{id}(id = ${nhaXB.maNhaXuatBan})}"
-											th:class="${nhaXB.hien ? 'btn btn-outline-warning':'btn btn-outline-danger'}" ><i th:class="${ nhaXB.hien ? 'fa fa-eye' : 'fa fa-eye-slash'}" ></i><span th:text="${nhaXB.hien ? 'Đang hiện':'Đã ẩn'}" ></span></a>
+										<td class="d-flex align-items-center gap-2">
+										  <a th:href="@{/admin/nhaxuatban/update/{id}(id=${nhaXB.maNhaXuatBan})}"
+										     class="btn btn-outline-info btn-sm">Sửa</a>
+										
+										  <a th:href="@{/admin/nhaxuatban/show/{id}(id=${nhaXB.maNhaXuatBan})}"
+										     th:class="${nhaXB.hien ? 'btn btn-outline-warning btn-sm' : 'btn btn-outline-danger btn-sm'}">
+										    <i th:class="${nhaXB.hien ? 'fa fa-eye' : 'fa fa-eye-slash'}"></i>
+										    <span th:text="${nhaXB.hien ? 'Đang hiện' : 'Đã ẩn'}"></span>
+										  </a>
 										</td>
+
 									</tr>	
 
 								</tbody>
