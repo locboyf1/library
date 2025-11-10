@@ -1,44 +1,51 @@
 package com.library.project.vinhuni.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "tblNhaXuatBan")
+@Table(name = "tbl_nha_xuat_ban")
 public class NhaXuatBan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "MaNXB")
+	@Column(name = "manxb")
 	private Integer maNhaXuatBan;
 
 	@NotBlank(message = "Tên nhà xuất bản không được để trống")
 	@Size(max = 200, message = "Vui lòng nhập đúng tên nhà xuất bản ")
-	@Column(name = "TenNXB", length = 200)
+	@Column(name = "ten_nxb", length = 200)
 	private String tenNhaXuatBan;
 
 	@NotBlank(message = "Email không được để trống")
 	@Size(max = 100, message = "Email không được quá dài")
-	@Column(name = "Email", length = 100)
+	@Column(name = "email", length = 100)
 	private String email;
 
 	@NotBlank(message = "Số điện thoại không được để trống")
 	@Size(max = 10, message = "Vui lòng nhập đúng định dạng")
-	@Column(name = "SoDienThoai", length = 10)
+	@Column(name = "so_dien_thoai", length = 10)
 	private String soDienThoai;
 
 	@NotBlank(message = "Địa chỉ không được để trống")
 	@Size(max = 500, message = "Địa chỉ không được quá dài")
-	@Column(name = "DiaChi", length = 500)
+	@Column(name = "dia_chi", length = 500)
 	private String diaChi;
 
-	@Column(name = "Hien", nullable = false)
+	@Column(name = "hien", nullable = false)
 	private Boolean hien;
+
+	@OneToMany(mappedBy = "nxb")
+	private List<Sach> sachs = new ArrayList<>();
 
 	public Integer getMaNhaXuatBan() {
 		return maNhaXuatBan;
@@ -86,5 +93,13 @@ public class NhaXuatBan {
 
 	public Boolean getHien() {
 		return this.hien;
+	}
+
+	public List<Sach> getSachs() {
+		return sachs;
+	}
+
+	public void setSachs(List<Sach> sachs) {
+		this.sachs = sachs;
 	}
 }

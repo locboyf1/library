@@ -1,10 +1,14 @@
 package com.library.project.vinhuni.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -32,6 +36,9 @@ public class TheLoai {
 
 	@Column(name = "Hien")
 	private Boolean hien;
+
+	@ManyToMany(mappedBy = "theLoais")
+	private List<Sach> sachs = new ArrayList<>();
 
 	public Integer getMaTheLoai() {
 		return maTheLoai;
@@ -71,5 +78,13 @@ public class TheLoai {
 
 	public Boolean getHien() {
 		return this.hien;
+	}
+
+	public List<Sach> getSachs() {
+		return sachs;
+	}
+
+	public void setSachs(List<Sach> sachs) {
+		this.sachs = sachs;
 	}
 }

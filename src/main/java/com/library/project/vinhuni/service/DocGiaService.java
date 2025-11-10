@@ -11,7 +11,7 @@ public class DocGiaService {
 	@Autowired
 	DocGiaRepository docGiaRepository;
 
-	public DocGia findByMaDocGia(String maDocGia) {
+	public DocGia findByMaDocGia(Integer maDocGia) {
 		return docGiaRepository.findByMaDocGia(maDocGia).orElse(null);
 	}
 }

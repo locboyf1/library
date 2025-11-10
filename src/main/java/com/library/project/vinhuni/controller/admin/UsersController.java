@@ -65,7 +65,8 @@ public class UsersController {
 	}
 
 	@PostMapping("/create/nhanvien")
-	public String createNhanVien(@Valid @ModelAttribute("userNhanVien") NhanVienDto userNhanVien, BindingResult result, Model model) {
+	public String createNhanVien(@Valid @ModelAttribute("userNhanVien") NhanVienDto userNhanVien, BindingResult result,
+			Model model) {
 
 		TaiKhoan kiemtra = taiKhoanService.findByTenDangNhap(userNhanVien.getTenDangNhap());
 		if (kiemtra != null) {
@@ -93,7 +94,8 @@ public class UsersController {
 	}
 
 	@PostMapping("/create/docgia")
-	public String createDocGia(@Valid @ModelAttribute("userDocGia") DocGiaDto userDocGia, BindingResult result, Model model) {
+	public String createDocGia(@Valid @ModelAttribute("userDocGia") DocGiaDto userDocGia, BindingResult result,
+			Model model) {
 
 		TaiKhoan kiemtra = taiKhoanService.findByTenDangNhap(userDocGia.getTenDangNhap());
 		if (kiemtra != null) {
@@ -141,7 +143,8 @@ public class UsersController {
 	}
 
 	@PostMapping("/update/nhanvien")
-	public String updateNhanVien(@Valid @ModelAttribute("user") NhanVienDto user, BindingResult result, @RequestParam("maNhanVien") String maNhanVien) {
+	public String updateNhanVien(@Valid @ModelAttribute("user") NhanVienDto user, BindingResult result,
+			@RequestParam("maNhanVien") Integer maNhanVien) {
 
 		if (result.hasErrors()) {
 			return "admin/users/updateNhanVien";
@@ -161,7 +164,8 @@ public class UsersController {
 	}
 
 	@PostMapping("/update/docgia")
-	public String updateNhanVien(@Valid @ModelAttribute("user") DocGiaDto user, BindingResult result, @RequestParam("maDocGia") String maDocGia) {
+	public String updateNhanVien(@Valid @ModelAttribute("user") DocGiaDto user, BindingResult result,
+			@RequestParam("maDocGia") Integer maDocGia) {
 
 		if (result.hasErrors()) {
 			return "admin/users/updateDocGia";

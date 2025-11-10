@@ -1,47 +1,53 @@
 package com.library.project.vinhuni.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "tblTacGia")
+@Table(name = "tbl_tac_gia")
 public class TacGia {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "MaTacGia")
+	@Column(name = "ma_tac_gia")
 	private Integer maTacGia;
 
 	@NotBlank(message = "Tên tác giả không được để trống")
 	@Size(max = 200, message = "Tên tác giả không được quá dài")
-	@Column(name = "TenTacGia")
+	@Column(name = "ten_tac_gia")
 	private String tenTacGia;
 
-	@Column(name = "BiDanh")
+	@Column(name = "bi_danh")
 	private String biDanh;
 
 	@Column(name = "anh", nullable = false, columnDefinition = "LONGTEXT")
 	private String anh;
 
-	@Size(max = 200, message = "Mô tả không được quá dài")
-	@Column(name = "MoTa", columnDefinition = "MEDIUMTEXT")
+	@Size(max = 1000, message = "Mô tả không được quá dài")
+	@Column(name = "mo_ta", columnDefinition = "MEDIUMTEXT")
 	private String moTa;
 
 	@NotBlank(message = "Nội dung không được để trống")
-	@Column(name = "NoiDung", columnDefinition = "LONGTEXT")
+	@Column(name = "noi_dung", columnDefinition = "LONGTEXT")
 	private String noiDung;
 
-	@Column(name = "NamSinh")
+	@Column(name = "nam_sinh")
 	private String namSinh;
 
 	@Column(name = "hien")
 	private Boolean hien;
+
+	@ManyToMany(mappedBy = "tacGias")
+	private List<Sach> sachs = new ArrayList<>();
 
 	public Integer getMaTacGia() {
 		return maTacGia;
@@ -105,5 +111,13 @@ public class TacGia {
 
 	public String getNamSinh() {
 		return this.namSinh;
+	}
+
+	public List<Sach> getSachs() {
+		return sachs;
+	}
+
+	public void setSachs(List<Sach> sachs) {
+		this.sachs = sachs;
 	}
 }
