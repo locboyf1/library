@@ -22,6 +22,14 @@ public class TacGiaService {
 		return tacGiaRepository.findAll();
 	};
 
+	public List<TacGia> findAllByMaTacGiaIn(List<Integer> maTacGias) {
+		return tacGiaRepository.findAllById(maTacGias);
+	}
+
+	public List<TacGia> findByHienTrue() {
+		return tacGiaRepository.findByHienTrue();
+	}
+
 	public TacGia findByMaTacGia(Integer maTacGia) {
 		return tacGiaRepository.findByMaTacGia(maTacGia).orElse(null);
 	}

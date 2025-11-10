@@ -17,6 +17,10 @@ public class NhaXuatBanService {
 		return nhaXuatBanRepository.findByMaNhaXuatBan(maNXB);
 	}
 
+	public List<NhaXuatBan> findByHienTrue() {
+		return nhaXuatBanRepository.findByHienTrue();
+	}
+
 	public List<NhaXuatBan> findAll() {
 		return nhaXuatBanRepository.findAll();
 	}

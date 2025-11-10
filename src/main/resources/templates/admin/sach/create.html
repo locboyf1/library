@@ -4,8 +4,6 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Thêm sách mới</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
 <body>
 	<section class="section" layout:fragment="content">
 		<div class="section-body">
@@ -15,86 +13,91 @@
 						<div class="card-header">
 							<h4>Thêm sách mới</h4>
 						</div>
-						
+
 						<form class="card-body" th:object="${sach}" method="post"
 							th:action="@{/admin/sach/create}" enctype="multipart/form-data">
-							
+
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<label>Tên sách</label> 
-										<input type="text" class="form-control" th:field="*{tenSach}">
-										<div class="text-danger" th:if="${#fields.hasErrors('tenSach')}" th:errors="*{tenSach}"></div>
+										<label>Tên sách</label> <input type="text"
+											class="form-control" th:field="*{tenSach}">
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('tenSach')}"
+											th:errors="*{tenSach}"></div>
 									</div>
 
 									<div class="form-group">
-										<label>Thể loại</label> 
-										<div class="input-group">
-											<select class="form-control" id="selectTheLoai">
-												<option value="">-- Chọn thể loại --</option>
-												<option th:each="tl : ${theLoais}"
-													th:value="${tl.maTheLoai}"
-													th:text="${tl.tenTheLoai}"></option>
+										<div>
+											<label>Thể loại:</label> <select multiple="multiple"
+												th:field="*{theLoaiIds}" class="form-control select2-multi" style="width: 100%;">
+												<option th:each="theLoai : ${theLoais}"
+													th:value="${theLoai.maTheLoai}"
+													th:text="${theLoai.tenTheLoai}"></option>
 											</select>
-											<div class="input-group-append">
-												<button class="btn btn-primary" type="button" id="addTheLoai">Thêm</button>
-											</div>
 										</div>
-										<div class="selected-tags mt-2" id="theLoaiTags"></div>
-										
-										<input type="hidden" name="theLoaiIds" id="theLoaiHiddenInput"
-											   th:value="*{theLoais.isEmpty()} ? '' : ${#strings.listJoin(sach.theLoais.![maTheLoai], ',')}">
-										<div class="text-danger" th:if="${#fields.hasErrors('theLoais')}" th:errors="*{theLoais}"></div>
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('theLoaiIds')}"
+											th:errors="*{theLoaiIds}"></div>
 									</div>
 
 									<div class="form-group">
-										<label>Tác giả</label> 
-										<div class="input-group">
-											<select class="form-control" id="selectTacGia">
-												<option value="">-- Chọn tác giả --</option>
-												<option th:each="tg : ${tacGias}"
-													th:value="${tg.maTacGia}"
-													th:text="${tg.tenTacGia}"></option>
+										<div>
+											<label>Tác giả:</label> <select multiple="multiple"
+												th:field="*{tacGiaIds}" class="form-control select2-multi" style="width: 100%;">
+												<option th:each="tacGia : ${tacGias}"
+													th:value="${tacGia.maTacGia}" th:text="${tacGia.tenTacGia}">
+												</option>
 											</select>
-											<div class="input-group-append">
-												<button class="btn btn-primary" type="button" id="addTacGia">Thêm</button>
-											</div>
 										</div>
-										<div class="selected-tags mt-2" id="tacGiaTags"></div>
-										
-										<input type="hidden" name="tacGiaIds" id="tacGiaHiddenInput"
-											   th:value="*{tacGias.isEmpty()} ? '' : ${#strings.listJoin(sach.tacGias.![maTacGia], ',')}">
-										<div class="text-danger" th:if="${#fields.hasErrors('tacGias')}" th:errors="*{tacGias}"></div>
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('tacGiaIds')}"
+											th:errors="*{tacGiaIds}"></div>
 									</div>
-									
 									<div class="form-group">
-										<label>Nhà xuất bản</label> 
-										<select class="form-control" th:field="*{nxb}">
+										<label>Nhà xuất bản</label> <select class="form-control"
+											th:field="*{nxbId}" >
 											<option value="">-- Chọn nhà xuất bản --</option>
-											<option th:each="nxbItem : ${nxbs}"
-												th:value="${nxbItem.maNhaXuatBan}"
-												th:text="${nxbItem.tenNhaXuatBan}"></option>
+											<option th:each="nxb : ${nxbs}"
+												th:value="${nxb.maNhaXuatBan}"
+												th:text="${nxb.tenNhaXuatBan}"></option>
 										</select>
-										<div class="text-danger" th:if="${#fields.hasErrors('nxb')}" th:errors="*{nxb}"></div>
+										<div class="text-danger" th:if="${#fields.hasErrors('nxbId')}"
+											th:errors="*{nxbId}"></div>
 									</div>
 
 									<div class="form-group">
 										<label>Mô tả</label>
 										<textarea class="form-control" th:field="*{moTa}" rows="6"></textarea>
-										<div class="text-danger" th:if="${#fields.hasErrors('moTa')}" th:errors="*{moTa}"></div>
+										<div class="text-danger" th:if="${#fields.hasErrors('moTa')}"
+											th:errors="*{moTa}"></div>
 									</div>
 								</div>
-								
+
 								<div class="col-md-6">
-									<div class="form-group"> <label>Số lượng</label> <input type="number" class="form-control" th:field="*{soLuong}"> <div class="text-danger" th:if="${#fields.hasErrors('soLuong')}" th:errors="*{soLuong}"></div> </div>
-									<div class="form-group"> <label>Năm xuất bản</label> <input type="number" class="form-control" th:field="*{namXuatBan}"> <div class="text-danger" th:if="${#fields.hasErrors('namXuatBan')}" th:errors="*{namXuatBan}"></div> </div>
-									
-									<div class="form-group"> 
-										<label>Ảnh bìa (Chọn file)</label> 
-										<input type="file" name="fileAnhBia" class="form-control" id="fileAnhBia">
-										<div class="text-danger" th:if="${#fields.hasErrors('anhBia')}" th:errors="*{anhBia}"></div>
-										
-										<img id="anhBiaPreview" src="" alt="Ảnh bìa xem trước" style="max-width: 100%; height: auto; margin-top: 10px; display: none;">
+									<div class="form-group">
+										<label>Số lượng</label> <input type="number"
+											class="form-control" th:field="*{soLuong}">
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('soLuong')}"
+											th:errors="*{soLuong}"></div>
+									</div>
+									<div class="form-group">
+										<label>Năm xuất bản</label> <input type="number"
+											class="form-control" th:field="*{namXuatBan}">
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('namXuatBan')}"
+											th:errors="*{namXuatBan}"></div>
+									</div>
+
+									<div class="form-group">
+										<label>Ảnh bìa (Chọn file)</label> <input type="file"
+											name="fileAnhBia" class="form-control" id="fileAnhBia">
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('anhBia')}" th:errors="*{anhBia}"></div>
+
+										<img id="anhBiaPreview" src="" alt="Ảnh bìa xem trước"
+											style="max-width: 100%; height: auto; margin-top: 10px; display: none;">
 									</div>
 								</div>
 							</div>
@@ -111,76 +114,13 @@
 		</div>
 	</section>
 
-	<script layout:fragment="script">
-		function setupMultiSelect(selectId, tagsContainerId, hiddenInputId) {
-			const selectElement = $(`#${selectId}`);
-			const tagsContainer = $(`#${tagsContainerId}`);
-			const hiddenInput = $(`#${hiddenInputId}`);
-			let selectedIds = new Set(hiddenInput.val().split(',').filter(id => id !== '').map(Number));
+	<script layout:fragment="scripts">
+    $(document).ready(function() {
 
-			function updateHiddenInput() {
-				hiddenInput.val(Array.from(selectedIds).join(','));
-			}
+        $('.select2-multi').select2({
+            theme: "bootstrap4" 
+        });
 
-			function addTag(id, text) {
-				if (!selectedIds.has(id)) {
-					selectedIds.add(id);
-					const tag = $(`
-						<span class="badge badge-primary mr-1 mb-1 d-inline-flex align-items-center">
-							${text}
-							<button type="button" class="close text-white ml-1" data-id="${id}" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</span>
-					`);
-					tagsContainer.append(tag);
-					updateHiddenInput();
-				}
-			}
-
-			// TẢI LẠI CÁC TAGS ĐÃ CHỌN (Quan trọng khi validation fail)
-			selectedIds.forEach(id => {
-				const option = selectElement.find(`option[value="${id}"]`);
-				if (option.length) {
-					const text = option.text();
-					const tag = $(`
-						<span class="badge badge-primary mr-1 mb-1 d-inline-flex align-items-center">
-							${text}
-							<button type="button" class="close text-white ml-1" data-id="${id}" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</span>
-					`);
-					tagsContainer.append(tag);
-				}
-			});
-
-			// Xử lý nút Thêm
-			$(`#add${selectId.replace('select','')}`).on('click', function() {
-				const selectedOption = selectElement.find('option:selected');
-				const id = parseInt(selectedOption.val());
-				const text = selectedOption.text();
-
-				if (id && text && !isNaN(id)) {
-					addTag(id, text);
-					selectElement.val('');
-				}
-			});
-
-			// Xử lý nút Xóa tag
-			tagsContainer.on('click', '.close', function() {
-				const idToRemove = parseInt($(this).data('id'));
-				selectedIds.delete(idToRemove);
-				$(this).closest('.badge').remove();
-				updateHiddenInput();
-			});
-		}
-		
-		setupMultiSelect('selectTheLoai', 'theLoaiTags', 'theLoaiHiddenInput');
-		setupMultiSelect('selectTacGia', 'tacGiaTags', 'tacGiaHiddenInput');
-
-
-		// JavaScript cho xem trước ảnh (Không đổi)
 		$('#fileAnhBia').on('change', function(event) {
 			const imagePreview = $('#anhBiaPreview');
 			if (event.target.files && event.target.files[0]) {
@@ -197,7 +137,7 @@
 				imagePreview.css('display', 'none');
 			}
 		});
-
-	</script>
+    });
+</script>
 </body>
 </html>

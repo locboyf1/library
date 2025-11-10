@@ -19,6 +19,14 @@ public class TheLoaiService {
 		return theLoaiIRepository.findByMaTheLoai(maTheLoai);
 	}
 
+	public List<TheLoai> findByHienTrue() {
+		return theLoaiIRepository.findByHienTrue();
+	}
+
+	public List<TheLoai> findAllByMaTheLoaiIn(List<Integer> maTheLoais) {
+		return theLoaiIRepository.findAllById(maTheLoais);
+	}
+
 	public List<TheLoai> findAll() {
 		return theLoaiIRepository.findAll();
 	}

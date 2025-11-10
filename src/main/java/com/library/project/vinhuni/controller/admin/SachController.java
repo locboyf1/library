@@ -1,13 +1,12 @@
 package com.library.project.vinhuni.controller.admin;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.library.project.vinhuni.dto.SachDto;
+import com.library.project.vinhuni.entity.NhaXuatBan;
 import com.library.project.vinhuni.entity.Sach;
 import com.library.project.vinhuni.entity.TacGia;
 import com.library.project.vinhuni.entity.TheLoai;
@@ -62,25 +63,39 @@ public class SachController {
 
 	@GetMapping("/create")
 	public String create(Model model) {
-		model.addAttribute("sach", new Sach());
-		addDropdownDataToModel(model);
+		model.addAttribute("sach", new SachDto());
+
+		List<TheLoai> theLoais = theLoaiService.findByHienTrue();
+		model.addAttribute("theLoais", theLoais);
+
+		List<TacGia> tacGias = tacGiaService.findByHienTrue();
+		model.addAttribute("tacGias", tacGias);
+
+		List<NhaXuatBan> nxbs = nhaXuatBanService.findByHienTrue();
+		model.addAttribute("nxbs", nxbs);
+
 		return "admin/sach/create";
 	}
 
 	@PostMapping("/create")
-	public String create(@Validated @ModelAttribute("sach") Sach sach, BindingResult result,
-			@RequestParam(name = "theLoaiIds", required = false) String theLoaiIds,
-			@RequestParam(name = "tacGiaIds", required = false) String tacGiaIds,
-			@RequestParam("fileAnhBia") MultipartFile fileAnhBia, Model model) {
+	public String create(@Valid @ModelAttribute("sach") SachDto sachDto, BindingResult result, @RequestParam(name = "theLoaiIds", required = false) String theLoaiIds, @RequestParam(name = "tacGiaIds", required = false) String tacGiaIds, @RequestParam("fileAnhBia") MultipartFile fileAnhBia, Model model) throws IOException {
 
-		setTheLoaiIdsFromString(sach, theLoaiIds);
-		setTacGiaIdsFromString(sach, tacGiaIds);
-
-		if (result.hasErrors()) {
-			addDropdownDataToModel(model);
-			return "admin/sach/create";
+		if (fileAnhBia.isEmpty()) {
+			result.rejectValue("anhBia", "null", "Ảnh bìa sách không được để trống");
 		}
 
+		if (result.hasErrors()) {
+			List<TheLoai> theLoais = theLoaiService.findByHienTrue();
+			model.addAttribute("theLoais", theLoais);
+
+			List<TacGia> tacGias = tacGiaService.findByHienTrue();
+			model.addAttribute("tacGias", tacGias);
+
+			List<NhaXuatBan> nxbs = nhaXuatBanService.findByHienTrue();
+			model.addAttribute("nxbs", nxbs);
+			return "admin/sach/create";
+		}
+		Sach sach = sachService.getSachFromDto(sachDto);
 		sachService.create(sach, fileAnhBia);
 		return "redirect:/admin/sach";
 	}
@@ -88,25 +103,39 @@ public class SachController {
 	@GetMapping("/update/{id}")
 	public String update(@PathVariable("id") Long maSach, Model model) {
 		Sach sach = sachService.findByMaSach(maSach);
-		model.addAttribute("sach", sach);
-		addDropdownDataToModel(model);
+		SachDto sachDto = new SachDto();
+		sachDto.getDtoFromSach(sach);
+
+		model.addAttribute("sach", sachDto);
+
+		List<TheLoai> theLoais = theLoaiService.findByHienTrue();
+		model.addAttribute("theLoais", theLoais);
+
+		List<TacGia> tacGias = tacGiaService.findByHienTrue();
+		model.addAttribute("tacGias", tacGias);
+
+		List<NhaXuatBan> nxbs = nhaXuatBanService.findByHienTrue();
+		model.addAttribute("nxbs", nxbs);
+
 		return "admin/sach/update";
 	}
 
 	@PostMapping("/update")
-	public String update(@Valid @ModelAttribute("sach") Sach sach, BindingResult result,
-			@RequestParam(name = "theLoaiIds", required = false) String theLoaiIds,
-			@RequestParam(name = "tacGiaIds", required = false) String tacGiaIds,
-			@RequestParam("fileAnhBia") MultipartFile fileAnhBia, Model model) {
-
-		setTheLoaiIdsFromString(sach, theLoaiIds);
-		setTacGiaIdsFromString(sach, tacGiaIds);
+	public String update(@Valid @ModelAttribute("sach") SachDto sachDto, BindingResult result, @RequestParam(name = "theLoaiIds", required = false) String theLoaiIds, @RequestParam(name = "tacGiaIds", required = false) String tacGiaIds, @RequestParam("fileAnhBia") MultipartFile fileAnhBia, Model model) throws IOException {
 
 		if (result.hasErrors()) {
-			addDropdownDataToModel(model);
+			List<TheLoai> theLoais = theLoaiService.findByHienTrue();
+			model.addAttribute("theLoais", theLoais);
+
+			List<TacGia> tacGias = tacGiaService.findByHienTrue();
+			model.addAttribute("tacGias", tacGias);
+
+			List<NhaXuatBan> nxbs = nhaXuatBanService.findByHienTrue();
+			model.addAttribute("nxbs", nxbs);
 			return "admin/sach/update";
 		}
 
+		Sach sach = sachService.getSachFromDto(sachDto);
 		sachService.update(sach, fileAnhBia);
 		return "redirect:/admin/sach";
 	}
@@ -118,29 +147,4 @@ public class SachController {
 		return "redirect:/admin/sach";
 	}
 
-	private void setTheLoaiIdsFromString(Sach sach, String theLoaiIds) {
-		if (theLoaiIds != null && !theLoaiIds.isEmpty()) {
-			List<TheLoai> theLoais = new ArrayList<>();
-			String[] ids = theLoaiIds.split(",");
-			for (String id : ids) {
-				theLoaiRepository.findById(Integer.parseInt(id)).ifPresent(theLoais::add);
-			}
-			sach.setTheLoais(theLoais);
-		} else {
-			sach.setTheLoais(new ArrayList<>());
-		}
-	}
-
-	private void setTacGiaIdsFromString(Sach sach, String tacGiaIds) {
-		if (tacGiaIds != null && !tacGiaIds.isEmpty()) {
-			List<TacGia> tacGias = new ArrayList<>();
-			String[] ids = tacGiaIds.split(",");
-			for (String id : ids) {
-				tacGiaRepository.findById(Integer.parseInt(id)).ifPresent(tacGias::add);
-			}
-			sach.setTacGias(tacGias);
-		} else {
-			sach.setTacGias(new ArrayList<>());
-		}
-	}
 }

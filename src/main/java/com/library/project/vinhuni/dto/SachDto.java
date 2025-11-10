@@ -1,82 +1,51 @@
-package com.library.project.vinhuni.entity;
+package com.library.project.vinhuni.dto;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-// IMPORT CÁC ANNOTATION VALIDATION
+import com.library.project.vinhuni.entity.Sach;
+import com.library.project.vinhuni.entity.TacGia;
+import com.library.project.vinhuni.entity.TheLoai;
+
+// CHỈ IMPORT VALIDATION, KHÔNG IMPORT PERSISTENCE
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-@Entity
-@Table(name = "tbl_sach")
-public class Sach {
+public class SachDto {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ma_sach")
 	private Long maSach;
 
 	@NotBlank(message = "Tên sách không được để trống")
 	@Size(max = 255, message = "Tên sách không quá 255 ký tự")
-	@Column(name = "ten_sach", nullable = false)
 	private String tenSach;
 
 	@NotNull(message = "Số lượng không được để trống")
 	@Min(value = 0, message = "Số lượng phải lớn hơn hoặc bằng 0")
-	@Column(name = "so_luong")
 	private Integer soLuong;
 
-	@Column(name = "mo_ta", columnDefinition = "TEXT")
 	private String moTa;
 
-	@Column(name = "anh_bia", columnDefinition = "LONGTEXT")
 	private String anhBia;
 
-	@Column(name = "nam_xuat_ban")
 	private Integer namXuatBan;
 
-	@Column(name = "ngay_nhap")
 	private LocalDate ngayNhap;
 
-	@Column(name = "tinh_trang")
 	private String tinhTrang;
 
-	@Column(name = "hien")
-	private Boolean hien;
-
 	@NotNull(message = "Nhà xuất bản không được để trống")
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ma_nxb")
-	private NhaXuatBan nxb;
+	private Integer nxbId;
 
 	@NotEmpty(message = "Phải chọn ít nhất một thể loại")
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "tbl_sach_the_loai", joinColumns = @JoinColumn(name = "ma_sach"), inverseJoinColumns = @JoinColumn(name = "ma_the_loai"))
-	private List<TheLoai> theLoais = new ArrayList<>();
+	private List<Integer> theLoaiIds = new ArrayList<>();
 
 	@NotEmpty(message = "Phải chọn ít nhất một tác giả")
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "tbl_sach_tac_gia", joinColumns = @JoinColumn(name = "ma_sach"), inverseJoinColumns = @JoinColumn(name = "ma_tac_gia"))
-	private List<TacGia> tacGias = new ArrayList<>();
-
-	public Sach() {
-
-	}
+	private List<Integer> tacGiaIds = new ArrayList<>();
 
 	public Long getMaSach() {
 		return maSach;
@@ -142,35 +111,55 @@ public class Sach {
 		this.tinhTrang = tinhTrang;
 	}
 
-	public NhaXuatBan getNxb() {
-		return nxb;
+	public Integer getNxbId() {
+		return nxbId;
 	}
 
-	public void setNxb(NhaXuatBan nxb) {
-		this.nxb = nxb;
+	public void setNxbId(Integer nxbId) {
+		this.nxbId = nxbId;
 	}
 
-	public List<TheLoai> getTheLoais() {
-		return theLoais;
+	public List<Integer> getTheLoaiIds() {
+		return theLoaiIds;
 	}
 
-	public void setTheLoais(List<TheLoai> theLoais) {
-		this.theLoais = theLoais;
+	public void setTheLoaiIds(List<Integer> theLoaiIds) {
+		this.theLoaiIds = theLoaiIds;
 	}
 
-	public List<TacGia> getTacGias() {
-		return tacGias;
+	public List<Integer> getTacGiaIds() {
+		return tacGiaIds;
 	}
 
-	public void setTacGias(List<TacGia> tacGias) {
-		this.tacGias = tacGias;
+	public void setTacGiaIds(List<Integer> tacGiaIds) {
+		this.tacGiaIds = tacGiaIds;
 	}
 
-	public void setHien(Boolean hien) {
-		this.hien = hien;
+	public void getDtoFromSach(Sach sach) {
+
+		this.setMaSach(sach.getMaSach());
+		this.setTenSach(sach.getTenSach());
+		this.setSoLuong(sach.getSoLuong());
+		this.setMoTa(sach.getMoTa());
+		this.setAnhBia(sach.getAnhBia());
+		this.setNamXuatBan(sach.getNamXuatBan());
+		this.setNgayNhap(sach.getNgayNhap());
+		this.setTinhTrang(sach.getTinhTrang());
+
+		if (sach.getNxb() != null) {
+			this.setNxbId(sach.getNxb().getMaNhaXuatBan());
+		}
+
+		if (sach.getTacGias() != null) {
+
+			List<Integer> tacGiaIds = sach.getTacGias().stream().map(TacGia::getMaTacGia).collect(Collectors.toList());
+			this.setTacGiaIds(tacGiaIds);
+		}
+
+		if (sach.getTheLoais() != null) {
+			List<Integer> theLoaiIds = sach.getTheLoais().stream().map(TheLoai::getMaTheLoai).collect(Collectors.toList());
+			this.setTheLoaiIds(theLoaiIds);
+		}
 	}
 
-	public Boolean getHien() {
-		return this.hien;
-	}
 }

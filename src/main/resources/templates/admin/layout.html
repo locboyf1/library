@@ -8,10 +8,14 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
 	name="viewport">
 <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Library</title>
+
+<link rel="stylesheet" th:href="@{/admins/assets/bundles/select2/dist/css/select2.min.css}" >
+
 <link rel="stylesheet" th:href="@{/admins/assets/css/app.min.css}">
 <link rel="stylesheet" th:href="@{/admins/assets/css/style.css}">
 <link rel="stylesheet" th:href="@{/admins/assets/css/components.css}">
 <link rel="stylesheet" th:href="@{/admins/assets/css/custom.css}">
+
 <link rel='shortcut icon' type='image/x-icon'
 	th:href="@{/admins/assets/img/favicon.ico}" />
 </head>
@@ -342,7 +346,10 @@
 	<script th:src="@{/admins/assets/bundles/apexcharts/apexcharts.min.js}"></script>
 	<script th:src="@{/admins/assets/js/page/index.js}"></script>
 	<script th:src="@{/admins/assets/js/scripts.js}"></script>
+	<script type="text/javascript" th:src="@{/admins/assets/bundles/select2/dist/js/select2.full.min.js}"></script>
 	<script th:src="@{/admins/assets/js/custom.js}"></script>
+	
+	<script layout:fragment="scripts" ></script>
 	
 </body>
 

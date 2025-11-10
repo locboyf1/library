@@ -63,9 +63,9 @@
 										     class="btn btn-outline-info btn-sm">Sửa</a>
 										
 										  <a th:href="@{/admin/sach/show/{id}(id=${sach.maSach})}"
-										     th:class="${sach.tinhTrang == 'Sẵn có' ? 'btn btn-outline-warning btn-sm' : 'btn btn-outline-danger btn-sm'}">
-										    <i th:class="${sach.tinhTrang == 'Sẵn có' ? 'fa fa-eye' : 'fa fa-eye-slash'}"></i>
-										    <span th:text="${sach.tinhTrang == 'Sẵn có' ? 'Sẵn có' : 'Đã ẩn'}"></span>
+										     th:class="${sach.hien ? 'btn btn-outline-warning btn-sm' : 'btn btn-outline-danger btn-sm'}">
+										    <i th:class="${sach.hien ? 'fa fa-eye' : 'fa fa-eye-slash'}"></i>
+										    <span th:text="${sach.hien ? 'Đang hiện' : 'Đã ẩn'}"></span>
 										  </a>
 										</td>
 									</tr>	
