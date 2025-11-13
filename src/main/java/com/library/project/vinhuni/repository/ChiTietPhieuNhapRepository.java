@@ -7,4 +7,5 @@ import com.library.project.vinhuni.entity.ChiTietPhieuNhap;
 
 @Repository
 public interface ChiTietPhieuNhapRepository extends JpaRepository<ChiTietPhieuNhap, Long> {
+	public ChiTietPhieuNhap findByMaCTPN(Long maChiTietPhieuNhap);
 }

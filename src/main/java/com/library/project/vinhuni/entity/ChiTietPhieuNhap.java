@@ -1,5 +1,6 @@
 package com.library.project.vinhuni.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ public class ChiTietPhieuNhap {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "mactpn")
 	private Long maCTPN;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -26,6 +28,45 @@ public class ChiTietPhieuNhap {
 	private Sach sach;
 
 	private Integer soLuong;
-	private Double donGia;
 
+	public ChiTietPhieuNhap() {
+	}
+
+	public ChiTietPhieuNhap(PhieuNhap phieuNhap, Sach sach, Integer soLuong) {
+		this.phieuNhap = phieuNhap;
+		this.sach = sach;
+		this.soLuong = soLuong;
+	}
+
+	public Long getMaCTPN() {
+		return maCTPN;
+	}
+
+	public PhieuNhap getPhieuNhap() {
+		return phieuNhap;
+	}
+
+	public Sach getSach() {
+		return sach;
+	}
+
+	public Integer getSoLuong() {
+		return soLuong;
+	}
+
+	public void setMaCTPN(Long maCTPN) {
+		this.maCTPN = maCTPN;
+	}
+
+	public void setPhieuNhap(PhieuNhap phieuNhap) {
+		this.phieuNhap = phieuNhap;
+	}
+
+	public void setSach(Sach sach) {
+		this.sach = sach;
+	}
+
+	public void setSoLuong(Integer soLuong) {
+		this.soLuong = soLuong;
+	}
 }
