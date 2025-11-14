@@ -20,8 +20,6 @@ import com.library.project.vinhuni.entity.NhaXuatBan;
 import com.library.project.vinhuni.entity.Sach;
 import com.library.project.vinhuni.entity.TacGia;
 import com.library.project.vinhuni.entity.TheLoai;
-import com.library.project.vinhuni.repository.TacGiaRepository;
-import com.library.project.vinhuni.repository.TheLoaiIRepository;
 import com.library.project.vinhuni.service.NhaXuatBanService;
 import com.library.project.vinhuni.service.SachService;
 import com.library.project.vinhuni.service.TacGiaService;
@@ -42,11 +40,6 @@ public class SachController {
 	TacGiaService tacGiaService;
 	@Autowired
 	NhaXuatBanService nhaXuatBanService;
-
-	@Autowired
-	TheLoaiIRepository theLoaiRepository;
-	@Autowired
-	TacGiaRepository tacGiaRepository;
 
 	private void addDropdownDataToModel(Model model) {
 		model.addAttribute("theLoais", theLoaiService.findAll());
@@ -78,7 +71,10 @@ public class SachController {
 	}
 
 	@PostMapping("/create")
-	public String create(@Valid @ModelAttribute("sach") SachDto sachDto, BindingResult result, @RequestParam(name = "theLoaiIds", required = false) String theLoaiIds, @RequestParam(name = "tacGiaIds", required = false) String tacGiaIds, @RequestParam("fileAnhBia") MultipartFile fileAnhBia, Model model) throws IOException {
+	public String create(@Valid @ModelAttribute("sach") SachDto sachDto, BindingResult result,
+			@RequestParam(name = "theLoaiIds", required = false) String theLoaiIds,
+			@RequestParam(name = "tacGiaIds", required = false) String tacGiaIds,
+			@RequestParam("fileAnhBia") MultipartFile fileAnhBia, Model model) throws IOException {
 
 		if (fileAnhBia.isEmpty()) {
 			result.rejectValue("anhBia", "null", "Ảnh bìa sách không được để trống");
@@ -121,7 +117,10 @@ public class SachController {
 	}
 
 	@PostMapping("/update")
-	public String update(@Valid @ModelAttribute("sach") SachDto sachDto, BindingResult result, @RequestParam(name = "theLoaiIds", required = false) String theLoaiIds, @RequestParam(name = "tacGiaIds", required = false) String tacGiaIds, @RequestParam("fileAnhBia") MultipartFile fileAnhBia, Model model) throws IOException {
+	public String update(@Valid @ModelAttribute("sach") SachDto sachDto, BindingResult result,
+			@RequestParam(name = "theLoaiIds", required = false) String theLoaiIds,
+			@RequestParam(name = "tacGiaIds", required = false) String tacGiaIds,
+			@RequestParam("fileAnhBia") MultipartFile fileAnhBia, Model model) throws IOException {
 
 		if (result.hasErrors()) {
 			List<TheLoai> theLoais = theLoaiService.findByHienTrue();

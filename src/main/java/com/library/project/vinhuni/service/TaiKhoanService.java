@@ -1,13 +1,8 @@
 package com.library.project.vinhuni.service;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -34,13 +29,13 @@ public class TaiKhoanService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		TaiKhoan nguoiDung = taiKhoanRepository.findByTenDangNhap(username).orElseThrow(
-				() -> new UsernameNotFoundException("Không tìm thấy người dùng với tài khoản: " + username));
+		TaiKhoan taiKhoan = taiKhoanRepository.findByTenDangNhap(username).orElse(null);
 
-		Set<GrantedAuthority> authorities = new HashSet<>();
-		authorities.add(new SimpleGrantedAuthority(nguoiDung.getLoaiTaiKhoan()));
+		if (taiKhoan == null) {
+			throw new UsernameNotFoundException("Không tìm thấy tài khoản với tên: " + username);
+		}
 
-		return new User(nguoiDung.getTenDangNhap(), nguoiDung.getMatKhau(), authorities);
+		return taiKhoan;
 	}
 
 	public void show(String tenDangNhap) {
