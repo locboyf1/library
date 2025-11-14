@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.BatchSize;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,7 +17,6 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-// IMPORT CÁC ANNOTATION VALIDATION
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -64,11 +65,13 @@ public class Sach {
 	@JoinColumn(name = "ma_nxb")
 	private NhaXuatBan nxb;
 
+	@BatchSize(size = 10)
 	@NotEmpty(message = "Phải chọn ít nhất một thể loại")
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "tbl_sach_the_loai", joinColumns = @JoinColumn(name = "ma_sach"), inverseJoinColumns = @JoinColumn(name = "ma_the_loai"))
 	private List<TheLoai> theLoais = new ArrayList<>();
 
+	@BatchSize(size = 10)
 	@NotEmpty(message = "Phải chọn ít nhất một tác giả")
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "tbl_sach_tac_gia", joinColumns = @JoinColumn(name = "ma_sach"), inverseJoinColumns = @JoinColumn(name = "ma_tac_gia"))

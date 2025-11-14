@@ -32,12 +32,6 @@ public class ChiTietPhieuNhap {
 	public ChiTietPhieuNhap() {
 	}
 
-	public ChiTietPhieuNhap(PhieuNhap phieuNhap, Sach sach, Integer soLuong) {
-		this.phieuNhap = phieuNhap;
-		this.sach = sach;
-		this.soLuong = soLuong;
-	}
-
 	public Long getMaCTPN() {
 		return maCTPN;
 	}

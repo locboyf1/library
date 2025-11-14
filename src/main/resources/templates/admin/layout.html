@@ -9,7 +9,8 @@
 	name="viewport">
 <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Library</title>
 
-<link rel="stylesheet" th:href="@{/admins/assets/bundles/select2/dist/css/select2.min.css}" >
+<link rel="stylesheet"
+	th:href="@{/admins/assets/bundles/select2/dist/css/select2.min.css}">
 
 <link rel="stylesheet" th:href="@{/admins/assets/css/app.min.css}">
 <link rel="stylesheet" th:href="@{/admins/assets/css/style.css}">
@@ -229,8 +230,11 @@
 							class="nav-link"><i data-feather="map-pin"></i><span>Quản
 									lý nhà xuất bản</span></a></li>
 						<li class="dropdown"><a th:href="@{/admin/sach}"
-						    class="nav-link"><i data-feather="book"></i><span>Quản
-                                    lý sách</span></a></li>
+							class="nav-link"><i data-feather="book"></i><span>Quản
+									lý sách</span></a></li>
+						<li class="dropdown"><a th:href="@{/admin/phieunhap}"
+							class="nav-link"><i data-feather="file-plus"></i><span>Quản
+									lý phiếu nhập</span></a></li>
 					</ul>
 				</aside>
 			</div>
@@ -346,11 +350,12 @@
 	<script th:src="@{/admins/assets/bundles/apexcharts/apexcharts.min.js}"></script>
 	<script th:src="@{/admins/assets/js/page/index.js}"></script>
 	<script th:src="@{/admins/assets/js/scripts.js}"></script>
-	<script type="text/javascript" th:src="@{/admins/assets/bundles/select2/dist/js/select2.full.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/admins/assets/bundles/select2/dist/js/select2.full.min.js}"></script>
 	<script th:src="@{/admins/assets/js/custom.js}"></script>
-	
-	<script layout:fragment="scripts" ></script>
-	
+
+	<script layout:fragment="scripts"></script>
+
 </body>
 
 
