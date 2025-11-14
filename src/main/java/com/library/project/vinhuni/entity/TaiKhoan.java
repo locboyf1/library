@@ -1,5 +1,12 @@
 package com.library.project.vinhuni.entity;
 
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -7,17 +14,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "tblTaiKhoan")
-public class TaiKhoan {
+public class TaiKhoan implements UserDetails {
 
 	@Id
 	@Column(name = "TenDangNhap", length = 50)
@@ -39,6 +42,15 @@ public class TaiKhoan {
 	@OneToOne
 	@JoinColumn(name = "MaDocGia", referencedColumnName = "MaDocGia")
 	private DocGia docGia;
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+
+		if (this.nhanVien != null) {
+			return List.of(new SimpleGrantedAuthority("nhanvien"));
+		}
+		return List.of();
+	}
 
 	public String getTenDangNhap() {
 		return tenDangNhap;
@@ -82,10 +94,40 @@ public class TaiKhoan {
 	}
 
 	public Boolean getTrangThai() {
-		return trangThai;
+		return this.trangThai;
 	}
 
 	public void setTrangThai(Boolean trangThai) {
 		this.trangThai = trangThai;
+	}
+
+	@Override
+	public String getPassword() {
+		return this.matKhau;
+	}
+
+	@Override
+	public String getUsername() {
+		return this.tenDangNhap;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return trangThai;
 	}
 }

@@ -1,35 +1,29 @@
 package com.library.project.vinhuni.dto;
 
 import java.time.LocalDate;
-import java.util.ArrayList; // Cần import
+import java.util.ArrayList;
 import java.util.List;
+
+import jakarta.validation.constraints.Size;
 
 public class PhieuNhapDto {
 
-	// 1. KHAI BÁO & KHỞI TẠO LIST: Phải khởi tạo ArrayList để tránh lỗi
-	// NullPointerException
+	@Size(min = 1, message = "Phieu nhập phải có ít nhất một sách trong mỗi phiếu nhập")
 	private List<ChiTietPhieuNhapDto> chiTietList = new ArrayList<>();
 
-	// ... các thuộc tính header khác ...
 	private LocalDate ngayNhap;
+	@Size(max = 500, message = "Ghi chú không được quá dài")
 	private String ghiChu;
 	private Long maNhanVien;
 
-	// --- 2. GETTER ĐÚNG CÁCH (Trả về List<ChiTietPhieuNhapDto>) ---
-	// Loại bỏ (hoặc sửa) phương thức getChiTietList() hiện tại của bạn.
-	// Phương thức đúng phải trả về List<ChiTietPhieuNhapDto>
 	public List<ChiTietPhieuNhapDto> getChiTietList() {
 		return chiTietList;
 	}
 
-	// --- 3. SETTER (Cần thiết để Spring MVC/Thymeleaf binding) ---
 	public void setChiTietList(List<ChiTietPhieuNhapDto> chiTietList) {
 		this.chiTietList = chiTietList;
 	}
 
-	// --- Các Getters/Setters khác cho ngayNhap, ghiChu, maNhanVien ---
-
-	// Ví dụ cho trường ngayNhap:
 	public LocalDate getNgayNhap() {
 		return ngayNhap;
 	}
@@ -38,5 +32,20 @@ public class PhieuNhapDto {
 		this.ngayNhap = ngayNhap;
 	}
 
-	// ... và các trường khác ...
+	public String getGhiChu() {
+		return ghiChu;
+	}
+
+	public void setGhiChu(String ghiChu) {
+		this.ghiChu = ghiChu;
+	}
+
+	public Long getMaNhanVien() {
+		return maNhanVien;
+	}
+
+	public void setMaNhanVien(Long maNhanVien) {
+		this.maNhanVien = maNhanVien;
+	}
+
 }

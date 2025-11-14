@@ -17,11 +17,6 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 
-	public static String testPass(String pass) {
-		PasswordEncoder encoder = new BCryptPasswordEncoder();
-		return encoder.encode(pass);
-	}
-
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(authorize -> authorize.requestMatchers("/admin/**").hasAuthority("nhanvien").requestMatchers("/", "/home", "/login", "/logout", "/register", "/assets/**", "/css/**", "/js/**", "/testpassword/**", "/testform/", "/admins/**").permitAll()
