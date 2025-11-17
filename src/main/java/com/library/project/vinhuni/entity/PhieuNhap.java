@@ -6,7 +6,6 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,7 +27,7 @@ public class PhieuNhap {
 	// Đã loại bỏ: private Double tongTien; vì thư viện của bạn miễn phí
 
 	// Mối quan hệ Many-to-One: Một Phiếu Nhập được tạo bởi một Nhân Viên
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name = "maNhanVien") // Khóa ngoại trỏ đến tblNhanVien
 	private NhanVien nhanVien;
 

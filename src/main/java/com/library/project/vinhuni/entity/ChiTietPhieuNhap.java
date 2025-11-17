@@ -1,5 +1,6 @@
 package com.library.project.vinhuni.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -19,7 +20,7 @@ public class ChiTietPhieuNhap {
 	@Column(name = "mactpn")
 	private Long maCTPN;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "maPhieuNhap")
 	private PhieuNhap phieuNhap;
 

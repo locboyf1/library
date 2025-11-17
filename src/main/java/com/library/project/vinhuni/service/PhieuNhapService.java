@@ -28,7 +28,7 @@ public class PhieuNhapService {
 	chiTietPhieuNhapService chiTietPhieuNhapService;
 
 	public List<PhieuNhap> findByOrderByNgayNhapDesc() {
-		return phieuNhapRepository.findAllWithDetailsOrderByNgayNhapDesc();
+		return phieuNhapRepository.findByOrderByNgayNhapDesc();
 	}
 
 	public void createPhieuNhap(PhieuNhapDto phieuNhapDto, NhanVien nhanVien) {

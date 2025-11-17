@@ -12,7 +12,7 @@ import com.library.project.vinhuni.repository.ChiTietPhieuNhapRepository;
 @Service
 public class chiTietPhieuNhapService {
 	@Autowired
-	private ChiTietPhieuNhapRepository chiTietPhieuNhapRepository;
+	ChiTietPhieuNhapRepository chiTietPhieuNhapRepository;
 
 	@Autowired
 	SachService sachService;

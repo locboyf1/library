@@ -13,6 +13,10 @@ public class KhoService {
 	@Autowired
 	private KhoRepository khoRepository;
 
+	public Kho findBySach(Sach sach) {
+		return khoRepository.findBySach(sach).orElse(null);
+	}
+
 	public void addBook(Sach sach, Integer soLuong) {
 		Kho kho = khoRepository.findBySach(sach).orElse(null);
 		if (kho == null) {
@@ -23,6 +27,16 @@ public class KhoService {
 			kho.setSoLuong(kho.getSoLuong() + soLuong);
 		}
 		khoRepository.save(kho);
+	}
+
+	public void subtractBook(Sach sach, Integer soLuong) {
+		Kho kho = khoRepository.findBySach(sach).orElse(null);
+		if (kho != null) {
+			Integer soLuongMoi = kho.getSoLuong() - soLuong;
+			kho.setSoLuong(soLuongMoi);
+			khoRepository.save(kho);
+		}
+
 	}
 
 }
