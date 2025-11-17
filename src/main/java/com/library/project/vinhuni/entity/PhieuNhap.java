@@ -1,6 +1,6 @@
 package com.library.project.vinhuni.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class PhieuNhap {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long maPhieuNhap; // Khóa chính
 
-	private LocalDate ngayNhap = LocalDate.now(); // Ngày nhập mặc định là ngày hiện tại
+	private LocalDateTime ngayNhap = LocalDateTime.now(); // Ngày nhập mặc định là ngày hiện tại
 	private String ghiChu;
 	// Đã loại bỏ: private Double tongTien; vì thư viện của bạn miễn phí
 
@@ -52,7 +52,7 @@ public class PhieuNhap {
 		return maPhieuNhap;
 	}
 
-	public LocalDate getNgayNhap() {
+	public LocalDateTime getNgayNhap() {
 		return ngayNhap;
 	}
 
@@ -73,7 +73,7 @@ public class PhieuNhap {
 		this.maPhieuNhap = maPhieuNhap;
 	}
 
-	public void setNgayNhap(LocalDate ngayNhap) {
+	public void setNgayNhap(LocalDateTime ngayNhap) {
 		this.ngayNhap = ngayNhap;
 	}
 

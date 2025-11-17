@@ -1,6 +1,6 @@
 package com.library.project.vinhuni.service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -34,9 +34,8 @@ public class PhieuNhapService {
 	public void createPhieuNhap(PhieuNhapDto phieuNhapDto, NhanVien nhanVien) {
 		PhieuNhap phieuNhap = new PhieuNhap();
 		phieuNhap.setGhiChu(phieuNhapDto.getGhiChu());
-		phieuNhap.setNgayNhap(phieuNhapDto.getNgayNhap());
 		phieuNhap.setNhanVien(nhanVien);
-		phieuNhap.setNgayNhap(LocalDate.now());
+		phieuNhap.setNgayNhap(LocalDateTime.now());
 
 		PhieuNhap phieuNhapDaLuu = phieuNhapRepository.save(phieuNhap);
 

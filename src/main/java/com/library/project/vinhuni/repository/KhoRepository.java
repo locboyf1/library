@@ -1,11 +1,14 @@
 package com.library.project.vinhuni.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import com.library.project.vinhuni.entity.Kho;
+import com.library.project.vinhuni.entity.Sach;
 
-@Repository
 public interface KhoRepository extends JpaRepository<Kho, Long> {
-	public Kho findByMaKho(Long maKho);
+
+	public Optional<Kho> findBySach(Sach sach);
+
 }

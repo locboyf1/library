@@ -28,8 +28,10 @@ import jakarta.validation.Valid;
 @Controller
 @RequestMapping("/admin/phieunhap")
 public class PhieuNhapController {
+
 	@Autowired
 	PhieuNhapService phieuNhapService;
+
 	@Autowired
 	SachService sachService;
 
@@ -62,6 +64,11 @@ public class PhieuNhapController {
 
 	@PostMapping("/create")
 	public String create(@Valid @ModelAttribute("phieuNhapDto") PhieuNhapDto phieuNhapDto, BindingResult result, @AuthenticationPrincipal TaiKhoan taiKhoan, Model model) {
+
+		if (phieuNhapDto.getChiTietList().size() == 0) {
+			result.rejectValue("ChiTietList", "null", "Phải có ít nhất một sách được nhập");
+		}
+
 		if (result.hasErrors()) {
 			List<Sach> sachs = sachService.findAll();
 			model.addAttribute("sachs", sachs);
@@ -72,6 +79,6 @@ public class PhieuNhapController {
 		NhanVien nhanVien = taiKhoanDB.getNhanVien();
 
 		phieuNhapService.createPhieuNhap(phieuNhapDto, nhanVien);
-		return "redirect:/admin";
+		return "redirect:/admin/sach";
 	}
 }

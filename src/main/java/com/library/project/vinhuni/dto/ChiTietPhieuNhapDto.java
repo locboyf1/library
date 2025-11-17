@@ -1,6 +1,9 @@
 package com.library.project.vinhuni.dto;
 
+import jakarta.validation.constraints.NotNull;
+
 public class ChiTietPhieuNhapDto {
+	@NotNull(message = "Sách không được để trống")
 	private Long maSach;
 	private Integer soLuong;
 

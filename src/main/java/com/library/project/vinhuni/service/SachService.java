@@ -54,7 +54,6 @@ public class SachService {
 
 		sach.setMaSach(sachDto.getMaSach());
 		sach.setTenSach(sachDto.getTenSach());
-		sach.setSoLuong(sachDto.getSoLuong());
 		sach.setMoTa(sachDto.getMoTa());
 		sach.setAnhBia(sachDto.getAnhBia());
 		sach.setNamXuatBan(sachDto.getNamXuatBan());

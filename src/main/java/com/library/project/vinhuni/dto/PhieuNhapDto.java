@@ -4,11 +4,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
 
 public class PhieuNhapDto {
 
-	@Size(min = 1, message = "Phieu nhập phải có ít nhất một sách trong mỗi phiếu nhập")
+	@Valid
 	private List<ChiTietPhieuNhapDto> chiTietList = new ArrayList<>();
 
 	private LocalDate ngayNhap;

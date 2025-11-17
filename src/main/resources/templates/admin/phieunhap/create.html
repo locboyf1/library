@@ -24,7 +24,8 @@
 									<label>Ghi chú</label> <input type="text" class="form-control"
 										th:field="*{ghiChu}" placeholder="Ghi chú (nếu có)">
 								</div>
-								<div class="text-danger" th:if="${#fields.hasErrors('ghiChu')}" th:errors="*{ghiChu}"></div>
+								<div class="text-danger" th:if="${#fields.hasErrors('ghiChu')}"
+									th:errors="*{ghiChu}"></div>
 							</div>
 
 							<hr>
@@ -38,13 +39,13 @@
 							</div>
 
 							<div id="chi-tiet-container"></div>
-
-
+							<div class="text-danger" th:if="${#fields.hasErrors()}"
+								th:text="${#fields.allErrors()[0]}"></div>
 							<div class="card-footer text-right">
 								<button class="btn btn-primary mr-1" type="submit">Lưu
 									Phiếu Nhập</button>
-								<a class="btn btn-secondary" th:href="@{/admin/phieunhap}">Quay
-									lại</a>
+								<a class="btn btn-secondary" th:href="@{/admin/sach}">Quay
+									lại kho sách</a>
 							</div>
 						</form>
 					</div>
@@ -59,8 +60,9 @@
 						class="form-control select-sach" style="width: 100%;">
 						<option value="">-- Vui lòng chọn sách --</option>
 						<option th:each="sach : ${sachs}" th:value="${sach.maSach}"
-							th:text="${sach.tenSach}"></option>
+							th:text="${sach.tenSach + ' - nhà xuất bản ' + sach.nxb.tenNhaXuatBan}"></option>
 					</select>
+
 				</div>
 				<div class="form-group col-md-3">
 					<label>Số lượng</label> <input type="number"
@@ -70,8 +72,11 @@
 				<div class="form-group col-md-2 d-flex align-items-end">
 					<button type="button" class="btn btn-danger btn-xoa-chi-tiet"
 						style="width: 100%;">Xóa</button>
+
 				</div>
+
 			</div>
+
 		</template>
 
 	</section>

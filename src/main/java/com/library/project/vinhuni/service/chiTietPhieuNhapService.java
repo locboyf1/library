@@ -17,6 +17,9 @@ public class chiTietPhieuNhapService {
 	@Autowired
 	SachService sachService;
 
+	@Autowired
+	KhoService khoService;
+
 	public void create(ChiTietPhieuNhapDto chiTietPhieuNhapDto, PhieuNhap phieuNhap) {
 		Sach sach = sachService.findByMaSach(chiTietPhieuNhapDto.getMaSach());
 
@@ -25,6 +28,8 @@ public class chiTietPhieuNhapService {
 		chiTietPhieuNhap.setSach(sach);
 		chiTietPhieuNhap.setSoLuong(chiTietPhieuNhapDto.getSoLuong());
 		chiTietPhieuNhapRepository.save(chiTietPhieuNhap);
+
+		khoService.addBook(sach, chiTietPhieuNhapDto.getSoLuong());
 	}
 
 }

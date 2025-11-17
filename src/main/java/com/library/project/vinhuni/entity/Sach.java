@@ -17,8 +17,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -38,11 +38,6 @@ public class Sach {
 	@Column(name = "ten_sach", nullable = false)
 	private String tenSach;
 
-	@NotNull(message = "Số lượng không được để trống")
-	@Min(value = 0, message = "Số lượng phải lớn hơn hoặc bằng 0")
-	@Column(name = "so_luong")
-	private Integer soLuong;
-
 	@Column(name = "mo_ta", columnDefinition = "TEXT")
 	private String moTa;
 
@@ -60,6 +55,9 @@ public class Sach {
 
 	@Column(name = "hien")
 	private Boolean hien;
+
+	@OneToOne(mappedBy = "sach")
+	private Kho kho;
 
 	@NotNull(message = "Nhà xuất bản không được để trống")
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -82,6 +80,14 @@ public class Sach {
 
 	}
 
+	public Kho getKho() {
+		return kho;
+	}
+
+	public void setKho(Kho kho) {
+		this.kho = kho;
+	}
+
 	public Long getMaSach() {
 		return maSach;
 	}
@@ -96,14 +102,6 @@ public class Sach {
 
 	public void setTenSach(String tenSach) {
 		this.tenSach = tenSach;
-	}
-
-	public Integer getSoLuong() {
-		return soLuong;
-	}
-
-	public void setSoLuong(Integer soLuong) {
-		this.soLuong = soLuong;
 	}
 
 	public String getMoTa() {
@@ -176,6 +174,13 @@ public class Sach {
 
 	public Boolean getHien() {
 		return this.hien;
+	}
+
+	public Integer getSoLuong() {
+		if (this.kho != null) {
+			return this.kho.getSoLuong();
+		}
+		return 0;
 	}
 
 	public Boolean isMoi() {

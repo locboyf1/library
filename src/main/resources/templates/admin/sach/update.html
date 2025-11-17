@@ -31,7 +31,8 @@
 									<div class="form-group">
 										<div>
 											<label>Thể loại:</label> <select multiple="multiple"
-												th:field="*{theLoaiIds}" class="form-control select2-multi" style="width: 100%;">
+												th:field="*{theLoaiIds}" class="form-control select2-multi"
+												style="width: 100%;">
 												<option th:each="theLoai : ${theLoais}"
 													th:value="${theLoai.maTheLoai}"
 													th:text="${theLoai.tenTheLoai}"></option>
@@ -45,7 +46,8 @@
 									<div class="form-group">
 										<div>
 											<label>Tác giả:</label> <select multiple="multiple"
-												th:field="*{tacGiaIds}" class="form-control select2-multi" style="width: 100%;">
+												th:field="*{tacGiaIds}" class="form-control select2-multi"
+												style="width: 100%;">
 												<option th:each="tacGia : ${tacGias}"
 													th:value="${tacGia.maTacGia}" th:text="${tacGia.tenTacGia}">
 												</option>
@@ -57,7 +59,7 @@
 									</div>
 									<div class="form-group">
 										<label>Nhà xuất bản</label> <select class="form-control"
-											th:field="*{nxbId}" >
+											th:field="*{nxbId}">
 											<option value="">-- Chọn nhà xuất bản --</option>
 											<option th:each="nxb : ${nxbs}"
 												th:value="${nxb.maNhaXuatBan}"
@@ -77,13 +79,6 @@
 
 								<div class="col-md-6">
 									<div class="form-group">
-										<label>Số lượng</label> <input type="number"
-											class="form-control" th:field="*{soLuong}">
-										<div class="text-danger"
-											th:if="${#fields.hasErrors('soLuong')}"
-											th:errors="*{soLuong}"></div>
-									</div>
-									<div class="form-group">
 										<label>Năm xuất bản</label> <input type="number"
 											class="form-control" th:field="*{namXuatBan}">
 										<div class="text-danger"
@@ -92,12 +87,14 @@
 									</div>
 
 									<div class="form-group">
-										<label>Ảnh bìa (Không chọn nếu muốn giữ ảnh cũ)</label> <input type="file"
-											name="fileAnhBia" class="form-control" id="fileAnhBia">
+										<label>Ảnh bìa (Không chọn nếu muốn giữ ảnh cũ)</label> <input
+											type="file" name="fileAnhBia" class="form-control"
+											id="fileAnhBia">
 										<div class="text-danger"
 											th:if="${#fields.hasErrors('anhBia')}" th:errors="*{anhBia}"></div>
 
-										<img id="anhBiaPreview" th:src="${sach.anhBia}	" alt="Ảnh bìa xem trước"
+										<img id="anhBiaPreview" th:src="${sach.anhBia}	"
+											alt="Ảnh bìa xem trước"
 											style="max-width: 100%; height: auto; margin-top: 10px;">
 									</div>
 								</div>
@@ -116,29 +113,29 @@
 	</section>
 
 	<script layout:fragment="scripts">
-    $(document).ready(function() {
+		$(document).ready(function() {
 
-        $('.select2-multi').select2({
-            theme: "bootstrap4" 
-        });
+			$('.select2-multi').select2({
+				theme : "bootstrap4"
+			});
 
-		$('#fileAnhBia').on('change', function(event) {
-			const imagePreview = $('#anhBiaPreview');
-			if (event.target.files && event.target.files[0]) {
-				const reader = new FileReader();
-				
-				reader.onload = function(e) {
-					imagePreview.attr('src', e.target.result);
-					imagePreview.css('display', 'block');
+			$('#fileAnhBia').on('change', function(event) {
+				const imagePreview = $('#anhBiaPreview');
+				if (event.target.files && event.target.files[0]) {
+					const reader = new FileReader();
+
+					reader.onload = function(e) {
+						imagePreview.attr('src', e.target.result);
+						imagePreview.css('display', 'block');
+					}
+
+					reader.readAsDataURL(event.target.files[0]);
+				} else {
+					imagePreview.attr('src', '');
+					imagePreview.css('display', 'none');
 				}
-				
-				reader.readAsDataURL(event.target.files[0]);
-			} else {
-				imagePreview.attr('src', '');
-				imagePreview.css('display', 'none');
-			}
+			});
 		});
-    });
-</script>
+	</script>
 </body>
 </html>
