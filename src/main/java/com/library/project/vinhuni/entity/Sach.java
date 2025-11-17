@@ -1,6 +1,7 @@
 package com.library.project.vinhuni.entity;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -176,4 +177,11 @@ public class Sach {
 	public Boolean getHien() {
 		return this.hien;
 	}
+
+	public Boolean isMoi() {
+		LocalDate homNay = LocalDate.now();
+		Long soNgay = ChronoUnit.DAYS.between(ngayNhap, homNay);
+		return soNgay <= 30;
+	}
+
 }
