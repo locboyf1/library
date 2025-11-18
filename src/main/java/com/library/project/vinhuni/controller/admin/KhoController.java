@@ -31,8 +31,8 @@ import jakarta.validation.Valid;
 @Controller
 @RequestMapping("/admin/kho")
 public class KhoController {
-
-	private final PhieuXuatService phieuXuatService;
+	@Autowired
+	PhieuXuatService phieuXuatService;
 
 	@Autowired
 	PhieuNhapService phieuNhapService;
@@ -48,10 +48,6 @@ public class KhoController {
 
 	@Autowired
 	PhieuNhapRepository phieuNhapRepository;
-
-	KhoController(PhieuXuatService phieuXuatService) {
-		this.phieuXuatService = phieuXuatService;
-	}
 
 	@GetMapping()
 	public String index(Model model) {
