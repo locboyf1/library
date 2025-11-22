@@ -22,7 +22,7 @@ import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/admin/tacgia")
-public class AuthorsController {
+public class QuanLyTacGiaController {
 
 	@Autowired
 	TacGiaService tacGiaService;
@@ -42,7 +42,8 @@ public class AuthorsController {
 	}
 
 	@PostMapping("/create")
-	public String create(@Valid @ModelAttribute("tacGia") TacGia tacGia, BindingResult result, @RequestParam("fileAnh") MultipartFile fileAnh) throws IOException {
+	public String create(@Valid @ModelAttribute("tacGia") TacGia tacGia, BindingResult result,
+			@RequestParam("fileAnh") MultipartFile fileAnh) throws IOException {
 		if (fileAnh.isEmpty()) {
 			result.rejectValue("anh", "null", "Ảnh không được để trống");
 		}
@@ -61,7 +62,8 @@ public class AuthorsController {
 	}
 
 	@PostMapping("/update")
-	public String update(@Valid @ModelAttribute("tacGia") TacGia tacGia, BindingResult result, MultipartFile fileAnh) throws IOException {
+	public String update(@Valid @ModelAttribute("tacGia") TacGia tacGia, BindingResult result, MultipartFile fileAnh)
+			throws IOException {
 
 		if (result.hasErrors()) {
 			return "admin/authors/update";

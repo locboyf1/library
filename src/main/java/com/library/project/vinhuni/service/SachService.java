@@ -6,7 +6,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,6 +34,25 @@ public class SachService {
 
 	@Autowired
 	NhaXuatBanService nhaXuatBanService;
+
+	public Page<Sach> findByKeyword(String tuKhoa, Integer trang, TacGia tacGia, TheLoai theLoai, String sapXepTheo, Integer dungTichTrang) {
+		String[] sapXep = sapXepTheo.split("_");
+		Pageable pageable = null;
+		if (sapXep[1].equals("asc")) {
+			pageable = PageRequest.of(trang - 1, dungTichTrang, Sort.by(sapXep[0]).ascending());
+		} else {
+			pageable = PageRequest.of(trang - 1, dungTichTrang, Sort.by(sapXep[0]).descending());
+		}
+		if (tacGia == null && theLoai == null) {
+			return sachRepository.findByKeyword(tuKhoa, pageable);
+		} else if (tacGia == null) {
+			return sachRepository.findByKeywordAndTheLoai(tuKhoa, theLoai, pageable);
+		} else if (theLoai == null) {
+			return sachRepository.findByKeywordAndTacGia(tuKhoa, tacGia, pageable);
+		} else {
+			return sachRepository.findByKeywordAndTheLoaiAndTacGia(tuKhoa, theLoai, tacGia, pageable);
+		}
+	}
 
 	public Sach findByMaSach(Long maSach) {
 		return sachRepository.findByMaSach(maSach);
@@ -95,9 +116,4 @@ public class SachService {
 		sachRepository.save(sach);
 	}
 
-	// Added to satisfy ShopController
-	public Page<Sach> find(String q, Long maNxb, String sort, Pageable pageable) {
-		// Basic implementation; extend with filtering later.
-		return sachRepository.findAll(pageable);
-	}
 }

@@ -29,7 +29,7 @@ import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/admin/sach")
-public class SachController {
+public class QuanLySachController {
 
 	@Autowired
 	SachService sachService;
@@ -65,7 +65,8 @@ public class SachController {
 	}
 
 	@PostMapping("/create")
-	public String create(@Valid @ModelAttribute("sach") SachDto sachDto, BindingResult result, @RequestParam("fileAnhBia") MultipartFile fileAnhBia, Model model) throws IOException {
+	public String create(@Valid @ModelAttribute("sach") SachDto sachDto, BindingResult result,
+			@RequestParam("fileAnhBia") MultipartFile fileAnhBia, Model model) throws IOException {
 
 		if (fileAnhBia.isEmpty()) {
 			result.rejectValue("anhBia", "null", "Ảnh bìa sách không được để trống");
@@ -108,7 +109,8 @@ public class SachController {
 	}
 
 	@PostMapping("/update")
-	public String update(@Valid @ModelAttribute("sach") SachDto sachDto, BindingResult result, @RequestParam("fileAnhBia") MultipartFile fileAnhBia, Model model) throws IOException {
+	public String update(@Valid @ModelAttribute("sach") SachDto sachDto, BindingResult result,
+			@RequestParam("fileAnhBia") MultipartFile fileAnhBia, Model model) throws IOException {
 
 		if (result.hasErrors()) {
 			List<TheLoai> theLoais = theLoaiService.findByHienTrue();

@@ -20,7 +20,7 @@ import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/admin/theloai")
-public class TheLoaiController {
+public class QuanLyTheLoaiController {
 
 	@Autowired
 	TheLoaiService theLoaiService;

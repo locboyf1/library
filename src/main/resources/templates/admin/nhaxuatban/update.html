@@ -3,7 +3,7 @@
 
 <head>
 
-<title>Sửa nhà xuất bản</title>
+	<title>Sửa nhà xuất bản</title>
 </head>
 
 <body>
@@ -16,28 +16,29 @@
 							<h4>Sửa nhà xuất bản</h4>
 						</div>
 						<form class="card-body" th:object="${nhaXuatBan}" method="post"
-							th:action="@{/admin/nhaxuatban/update}"
-							enctype="multipart/form-data">
+							th:action="@{/admin/nhaxuatban/update}" enctype="multipart/form-data">
 							<input type="hidden" th:field="*{maNhaXuatBan}" />
-								<div class="form-group">
-								<label>Tên nhà xuất bản</label> <input type="text"
-									class="form-control" th:field="*{tenNhaXuatBan}">
-									<div class="text-danger" th:if="${#fields.hasErrors('tenNhaXuatBan')}" th:errors="*{tenNhaXuatBan}" ></div>
+							<div class="form-group">
+								<label>Tên nhà xuất bản</label> <input type="text" class="form-control"
+									th:field="*{tenNhaXuatBan}">
+								<div class="text-danger" th:if="${#fields.hasErrors('tenNhaXuatBan')}"
+									th:errors="*{tenNhaXuatBan}"></div>
 							</div>
 							<div class="form-group">
-								<label>Email</label> <input type="text"
-									class="form-control" th:field="*{email}">
-									<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" ></div>
+								<label>Email</label> <input type="text" class="form-control" th:field="*{email}">
+								<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+								</div>
 							</div>
 							<div class="form-group">
-								<label>Số điện thoại</label> <input type="text"
-									class="form-control" th:field="*{soDienThoai}">
-									<div class="text-danger" th:if="${#fields.hasErrors('soDienThoai')}" th:errors="*{soDienThoai}" ></div>
+								<label>Số điện thoại</label> <input type="text" class="form-control"
+									th:field="*{soDienThoai}">
+								<div class="text-danger" th:if="${#fields.hasErrors('soDienThoai')}"
+									th:errors="*{soDienThoai}"></div>
 							</div>
 							<div class="form-group">
-								<label>Địa chỉ</label> <input type="text"
-									class="form-control" th:field="*{diaChi}">
-									<div class="text-danger" th:if="${#fields.hasErrors('diaChi')}" th:errors="*{diaChi}" ></div>
+								<label>Địa chỉ</label> <input type="text" class="form-control" th:field="*{diaChi}">
+								<div class="text-danger" th:if="${#fields.hasErrors('diaChi')}" th:errors="*{diaChi}">
+								</div>
 							</div>
 							<div class="card-footer text-right">
 								<button class="btn btn-primary mr-1" type="submit">Lưu</button>

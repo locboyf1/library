@@ -28,7 +28,7 @@ import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/admin/nguoidung")
-public class UsersController {
+public class QuanLyNguoiDungController {
 
 	@Autowired
 	TaiKhoanRepository taiKhoanRepository;

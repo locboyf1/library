@@ -21,7 +21,7 @@ import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/admin/nhaxuatban")
-public class NhaXuatBanController {
+public class QuanLyNhaXuatBanController {
 	@Autowired
 	NhaXuatBanService nhaXuatBanService;
 

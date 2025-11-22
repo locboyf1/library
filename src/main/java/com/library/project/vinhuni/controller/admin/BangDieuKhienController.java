@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
-public class DashboardController {
+public class BangDieuKhienController {
 
 	@GetMapping("")
 	public String index() {

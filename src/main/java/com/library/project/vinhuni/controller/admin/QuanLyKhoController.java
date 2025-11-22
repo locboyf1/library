@@ -30,7 +30,7 @@ import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/admin/kho")
-public class KhoController {
+public class QuanLyKhoController {
 	@Autowired
 	PhieuXuatService phieuXuatService;
 
@@ -71,7 +71,8 @@ public class KhoController {
 	}
 
 	@PostMapping("/add")
-	public String add(@Valid @ModelAttribute("phieuNhapDto") PhieuNhapDto phieuNhapDto, BindingResult result, @AuthenticationPrincipal TaiKhoan taiKhoan, Model model) {
+	public String add(@Valid @ModelAttribute("phieuNhapDto") PhieuNhapDto phieuNhapDto, BindingResult result,
+			@AuthenticationPrincipal TaiKhoan taiKhoan, Model model) {
 
 		if (phieuNhapDto.getChiTietList().size() == 0) {
 			result.rejectValue("ChiTietList", "null", "Phải có ít nhất một sách được nhập");
@@ -102,7 +103,8 @@ public class KhoController {
 	}
 
 	@PostMapping("/subtract")
-	public String subtract(@Valid @ModelAttribute("phieuXuatDto") PhieuXuatDto phieuXuatDto, BindingResult result, @AuthenticationPrincipal TaiKhoan taiKhoan, Model model) {
+	public String subtract(@Valid @ModelAttribute("phieuXuatDto") PhieuXuatDto phieuXuatDto, BindingResult result,
+			@AuthenticationPrincipal TaiKhoan taiKhoan, Model model) {
 
 		if (phieuXuatDto.getChiTietList().size() == 0) {
 			result.rejectValue("ChiTietList", "null", "Phải có ít nhất một sách được xuất");
